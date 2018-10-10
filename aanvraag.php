@@ -62,6 +62,7 @@ if(isset($_POST['submit'])){
 
 
     $sql = "INSERT INTO aanvragen (domeinnaam, domeinext, hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats, telefoon, mobiel, email, kvk, opmerking) VALUES ('" . $domeinnaam . "','" . $domeinext . "','" . $hosting . "','" . $mailing . "','" . $voornaam . "','" . $achternaam . "','" . $bedrijfsnaam . "','" . $adres . "','" . $postcode . "','" . $woonplaats . "','" . $telefoon . "','" . $mobiel . "','" . $email . "','" . $kvk . "','" . $opmerking . "');";
+
     mysqli_query($conn, $sql);
 
 
@@ -71,7 +72,7 @@ if(isset($_POST['submit'])){
         $mail->SMTPAuth = true; // authentication enabled
         $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
         $mail->Host = "smtp.office365.com";
-        $mail->Port = 587; // or 587
+        $mail->Port = 587;
 
         $mail->IsHTML(true);
         $mail->Username = $mailUsername;

@@ -5,16 +5,20 @@
 
     <title>Domein aanvragen</title>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="css/fontawesome/531.css"-->
+<!--          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 
+<!--Javascript-->
     <script src="js/common.js"></script>
     <script src="lib/prototype.js"></script>
-
-    <link href="main.css" rel="stylesheet" />
     <script type="text/javascript" src="jquery-1.2.6.min.js"></script>
+<!--    Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="css/fontawesome/531.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/337.css">
+    <link href="main.css" rel="stylesheet" />
 
+<!--jQuery-->
     <script language="javascript">
 
         function aanvraag(){
@@ -87,6 +91,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
