@@ -61,7 +61,10 @@ if(isset($_POST['submit'])){
     }
 
 
-    $sql = "INSERT INTO aanvragen (domeinnaam, domeinext, hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats, telefoon, mobiel, email, kvk, opmerking) VALUES ('" . $domeinnaam . "','" . $domeinext . "','" . $hosting . "','" . $mailing . "','" . $voornaam . "','" . $achternaam . "','" . $bedrijfsnaam . "','" . $adres . "','" . $postcode . "','" . $woonplaats . "','" . $telefoon . "','" . $mobiel . "','" . $email . "','" . $kvk . "','" . $opmerking . "');";
+    $sql = "INSERT INTO aanvragen (hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats, 
+telefoon, mobiel, email, kvk, opmerking) VALUES ('" . $hosting . "','" . $mailing . "','" . $voornaam .
+        "','" . $achternaam . "','" . $bedrijfsnaam . "','" . $adres . "','" . $postcode . "','" . $woonplaats . "','" . $telefoon . "','" . $mobiel
+        . "','" . $email . "','" . $kvk . "','" . $opmerking . "');";
 
     mysqli_query($conn, $sql);
 

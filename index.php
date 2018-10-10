@@ -5,21 +5,19 @@
 
     <title>Domein aanvragen</title>
 
-<!--    <link rel="stylesheet" href="css/fontawesome/531.css"-->
-<!--          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-
 <!--Javascript-->
     <script src="js/common.js"></script>
     <script src="lib/prototype.js"></script>
-    <script type="text/javascript" src="jquery-1.2.6.min.js"></script>
+    <script src="jquery-1.2.6.min.js"></script>
 <!--    Stylesheets-->
     <link rel="stylesheet" type="text/css" href="css/fontawesome/531.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/337.css">
     <link href="main.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!--jQuery-->
-    <script language="javascript">
+    <script>
 
         function aanvraag(){
             var domeinnaam = document.getElementById('Search').value;
@@ -54,7 +52,7 @@
     </script>
 </head>
 
-<body background="images/background.png">
+<body>
 <noscript><span style="color:red;">Je browser ondersteunt geen JavaScript! Je hebt dit nodig om deze pagina goed te kunnen gebruiken.</span></noscript>
 <div class="aanvraag">
     <div class="domeincheck">
@@ -70,7 +68,7 @@
                                 <input type="text" autocomplete="off" id="Search" name="domain">
                                 <input type="submit" id="Submit" value="Submit">
                             </form>
-                            <div id="loading"><img style="height: 50px; width: 50px;"src="load.gif"></div>
+                            <div id="loading"><img alt="Loading..." style="height: 50px; width: 50px;" src="load.gif"></div>
                             <div id="results">
                             </div>
                         </div>
@@ -159,6 +157,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
                                     <div class="box-part text-center">
                                         <div class="title">
@@ -257,13 +256,14 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="Achternaam"><i class="fas fa-user"></i> Achternaam<span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="Achternaam" name="Achternaam" placeholder="Achternaam"required>
+                                            <input type="text" class="form-control" id="Achternaam" name="Achternaam"
+                                                   placeholder="Achternaam" required>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="Adres"><i class="fas fa-map-marker-alt"></i> Adres<span style="color:red;">*</span></label>
-                                            <input type="Adres" class="form-control" id="Adres" name="Adres" placeholder="Adres" required>
+                                            <input type="text" class="form-control" id="Adres" name="Adres" placeholder="Adres" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="Postcode"><i class="fas fa-map-marker-alt"></i> Postcode<span style="color:red;">*</span></label>
@@ -273,7 +273,8 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="Woonplaats"><i class="fas fa-map-marker-alt"></i> Woonplaats<span style="color:red;">*</span></label>
-                                            <input type="Woonplaats" class="form-control" id="Woonplaats" name="Woonplaats" placeholder="Woonplaats" required>
+                                            <input type="text" class="form-control" id="Woonplaats" name="Woonplaats" placeholder="Woonplaats"
+                                                   required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="Email"><i class="fas fa-envelope"></i> Email adres<span style="color:red;">*</span></label>
@@ -312,12 +313,13 @@
                             <br>
                             <div class="Opmerking">
                                 <textarea id="Opmerking" rows="5"
-                                          name="Opmerking" value="Opmerking" placeholder="Opmerking" maxlength="255"
+                                          name="Opmerking" placeholder="Opmerking" maxlength="255"
                                           style="width: 100%; resize:none;"></textarea>
                             </div>
                             <br>
                             <a href="http://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de Algemene Voorwaarden te lezen.</a><br>
-                            <input type="checkbox" id="akkoord" value="akkoord" name="akkoord" required>Ik ga akkoord met de Algemene Voorwaarden van Nubix BV.</input>
+                            <input type="checkbox" id="akkoord" value="akkoord" name="akkoord" required>Ik ga akkoord met de Algemene Voorwaarden
+                            van Nubix BV.
                             <span style="color:red;">*</span>
                             <br>
                             <br>
@@ -331,6 +333,7 @@
                 </div>
     </form>
             </div>
+</div>
 
 </body>
 </html>
