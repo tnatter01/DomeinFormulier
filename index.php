@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--Metadata-->
     <meta charset="UTF-8">
-
+    <meta name="keywords" content="Domeinaanvraag, Aanvraagformulier, Nubix, Domaincheck">
+    <meta name="description" content="Formulier met domeincheck voor aanvraag domein">
+    <meta name="author" content="Twan Natter">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Title-->
     <title>Domein aanvragen</title>
-
+<!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico">
 <!--Javascript-->
     <script src="js/common.js"></script>
     <script src="lib/prototype.js"></script>
