@@ -39,20 +39,18 @@ if(isset($_GET['domain']))
 			{
 				$extzonderpunt = str_replace(".", "", $extension);
 					$domeinmetext = "$domain$extension";
-					echo '<h4 class="available"><input type="checkbox" id="aanvraagcheck" " value="'.$extzonderpunt.'" ><span> Beschikbaar</span>' .
+					echo '<h4 class="available"><input type="checkbox" id="aanvraagcheck" " value="'.$extzonderpunt.'" >  <span>Beschikbaar</span>' .
 						$domain. '<b>' . $extension .'</b> is vrij 
 							</h4>';
 			}
 			else
 			{
-				echo '<h4 class="taken"><input type="checkbox" disabled><span>In gebruik </span>' . $domain . '<b>' .$extension .'</b> is in gebruik</h4>';
+				echo '<h4 class="taken"><input type="checkbox" disabled>  <span>In gebruik </span>' . $domain . '<b>' .$extension .'</b> is in 						gebruik</h4>';
 			}
 			echo '<br />';
-
 			ob_flush();
 			flush();
 			sleep(0.3);
-
 		}
 	}
 	else

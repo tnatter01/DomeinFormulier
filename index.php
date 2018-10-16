@@ -30,13 +30,17 @@
                 $('#aanvraagcheck:checked').each(function() {
                     $('#domeinnaamarea').append(domeinnaam + "." +this.value + "(Aanvraag)\n");
                 });
-        };
+        }
 
         $(document).ready(function() {
             var loading;
             var results;
             loading = document.getElementById('loading');
             results = document.getElementById('results');
+
+            $('#submit').click(function(){
+               $.post("aanvraag.php", aangevraagd);
+            });
 
             $('#Submit').click( function() {
                 if($('#Search').val() == "")
