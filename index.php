@@ -78,7 +78,7 @@
                                 <input type="text" autocomplete="off" id="Search" name="domain">
                                 <input type="submit" id="Submit" value="Submit">
                             </form>
-                            <div id="loading"><img alt="Loading..." style="height: 50px; width: 50px;" src="load.gif"></div>
+                            <div id="loading"><img alt="Loading..." style="height: 50px; width: 50px;" src="images/load.gif"></div>
                             <div id="results">
                             </div>
                         </div>

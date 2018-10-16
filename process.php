@@ -57,6 +57,6 @@ if(isset($_GET['domain']))
 	{
 		echo 'Vul een domeinnaam in.';
 	}
-	echo '<span>Selecteer de domeinen die u wilt aanvragen en klik op de knop hieronder.<br></span><button id="aanvraagbutton" onclick="aanvraag()">Aanvragen</button>';
+			echo '<span>Selecteer de domeinen die u wilt aanvragen en klik op de knop hieronder.<br></span><button id="aanvraagbutton" onclick="aanvraag()">Aanvragen</button>';
 }
 ?>
