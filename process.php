@@ -16,7 +16,7 @@ $extensions = array(
 
 if(isset($_GET['domain']))
 {
-	$domain = str_replace(array('www.', 'http://'), NULL, $_GET['domain']);
+	$domain = str_replace(array('www.', 'http://', '.nl', '.com', '.net','.org','.be','.info','.eu','.de'), NULL, $_GET['domain']);
 
 	if(strlen($domain) > 0)
 	{
