@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Twan
- * Date: 10-9-2018
- * Time: 08:39
- */
 
 
 $host = "localhost";
-$userName = "username";
+$userName = "root";
 $password = "password";
-$dbName = "database";
+$dbName = "databse";
 
 $conn = new mysqli($host, $userName, $password, $dbName);
 
@@ -19,8 +13,14 @@ if ($conn->connect_error) {
 }
 
 
-$mailUsername = "username@example.com";
-$mailPassword = "Ex4mpl3!";
+global $mailUsername;
+global $mailPassword;
+global $mailToNubix;
+$mailUsername = "username@host.com";
+$mailPassword = "Password4!";
+$mailToNubix = "support@example.com";
+
+
 ?>
 
 
