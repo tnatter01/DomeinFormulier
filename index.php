@@ -28,7 +28,7 @@
         function aanvraag(){
             var domeinnaam = document.getElementById('Search').value;
                 $('#aanvraagcheck:checked').each(function() {
-                    $('#domeinnaamarea').append(domeinnaam + "." +this.value + "(Aanvraag)\n");
+                    $('#domeinnaamarea').append(domeinnaam + "." +this.value + "(Aanvraag), \n");
                 });
         }
 

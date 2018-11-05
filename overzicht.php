@@ -29,6 +29,7 @@ echo "<table class=\"table table-hover table-dark\">
         <th scope=\"col\">Email adres</th>
         <th scope=\"col\">KvK nummer</th>
         <th scope=\"col\">Opmerking</th>
+        <th scope='col'>Verwijderen</th>
     </tr>
     </thead>
     <tbody>";
@@ -40,7 +41,7 @@ while($row = mysqli_fetch_array($result))
 
     echo "<tr>";
     echo "<td>" . $row['aanvraag_id'] . "</td>";
-    echo "<td>" . $row['domeinnaam'] . $row['domeinext'] . "</td>";
+    echo "<td>" . $row['domeinen'] . "</td>";
     echo "<td>" . $row['hosting'] . "</td>";
     echo "<td>" . $row['maling'] . "</td>";
     echo "<td>" . $row['voornaam'] . "</td>";
@@ -54,6 +55,7 @@ while($row = mysqli_fetch_array($result))
     echo "<td>" . $row['email'] . "</td>";
     echo "<td>" . $row['kvk'] . "</td>";
     echo "<td>" . $row['opmerking'] . "</td>";
+    echo "<td><a href='delete.php?id=" . $row['aanvraag_id'] . "'><i class=\"fas fa-trash-alt\"></a></i></td>";
     echo "</tr>";
 
 }

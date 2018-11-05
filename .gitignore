@@ -1,6 +1,6 @@
-config.php
-.gitignore
-composer.json
-composer.lock
-Email Opmaak.html
-jquery-1.2.6.min.js
+/config.php
+/.gitignore
+/composer.json
+/composer.lock
+/Email Opmaak.html
+/jquery-1.2.6.min.js

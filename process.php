@@ -3,12 +3,13 @@ set_time_limit(0);
 ob_start();
 
 ########### Extensions to be checked
+#, , , , , , , nu, uk, co.uk, , , ,
 $extensions = array(
     '.nl' => array('whois.domain-registry.nl','is free'), #!
+    '.be' => array('whois.dns.be','Status:	AVAILABLE'), #!
     '.com' => array('whois.crsnic.net','No match for'),
     '.net' => array('whois.crsnic.net','No match for'),
     '.org' => array('whois.publicinterestregistry.net','NOT FOUND'),
-    '.be' => array('whois.dns.be','Status:	AVAILABLE'), #!
     '.info' => array('whois.afilias.net','NOT FOUND'),
     '.eu' => array('whois.eu','Status: AVAILABLE'), #!
     '.de' => array('whois.denic.de','FREE'),

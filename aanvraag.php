@@ -8,6 +8,9 @@ if(isset($_POST['submit'])){
 
     require_once("index.php");
     $domeinnamen = $_POST['domeinnaamarea'];
+    $domeinnamen = str_replace("(Aanvraag)","",$domeinnamen);
+    $domeinnamenArray = (explode(",", $domeinnamen));
+    array_pop($domeinnamenArray);
     $hosting = $_POST['hosting'];
     $aanvraagsdatum = date("d-m-Y");
     $mailing = $_POST['mailing'];
@@ -60,13 +63,14 @@ if(isset($_POST['submit'])){
             $mailingDesc = "Geen mailing gekozen, contact opnemen met klant.";
     }
 
+    foreach ($domeinnamenArray as $domein){
+        $sql = "INSERT INTO aanvragen (domeinen, hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats, 
+                telefoon, mobiel, email, kvk, opmerking) VALUES ('". $domein . "','". $hosting . "','" . $mailing . "','" . $voornaam .
+            "','" . $achternaam . "','" . $bedrijfsnaam . "','" . $adres . "','" . $postcode . "','" . $woonplaats . "','" . $telefoon . "','" . $mobiel
+            . "','" . $email . "','" . $kvk . "','" . $opmerking . "');";
+        mysqli_query($conn, $sql);
+    }
 
-    $sql = "INSERT INTO aanvragen (hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats, 
-telefoon, mobiel, email, kvk, opmerking) VALUES ('" . $hosting . "','" . $mailing . "','" . $voornaam .
-        "','" . $achternaam . "','" . $bedrijfsnaam . "','" . $adres . "','" . $postcode . "','" . $woonplaats . "','" . $telefoon . "','" . $mobiel
-        . "','" . $email . "','" . $kvk . "','" . $opmerking . "');";
-
-    mysqli_query($conn, $sql);
 
 
         $mail = new PHPMailer(); // create a new object

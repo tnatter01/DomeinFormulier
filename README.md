@@ -1,6 +1,6 @@
-# domeinformulier
+# **_domeinformulier_**
 
-Functies:
+### Functies:
 * Domein beschikbaarheids check
 * Aanvraagformulier
 * Wordt via mail verzonden
