@@ -10,8 +10,8 @@ function validate() {
             $('#loading').show();
             var temp = $('#testdomein').val();
             temp = temp.split('.')[0];
-            var domein = temp.replace( /\s/g, "") + '.' + $('#extentie').val();
-            if (domeinnaam === domein){
+            var domein = temp.replace(/\s/g, "") + '.' + $('#extentie').val();
+            if (domeinnaam === domein) {
                 $('#loading').hide();
                 alert('Voer een nieuw domeinnaam in.');
             }
@@ -21,7 +21,7 @@ function validate() {
                     type: "GET",
                     url: "/domeincheck.php",
                     data: 'domein=' + domein
-                }).done(function(data) {
+                }).done(function (data) {
                     $('#loading').hide();
                     $('#status').html(data);
                 });
@@ -38,7 +38,7 @@ function validate() {
 }
 
 function gebruikdomein() {
-    if (domeinnaam !== '' && domeinnaam!== null) {
+    if (domeinnaam !== '' && domeinnaam !== null) {
         $("#gebruik").attr("disabled", "disabled");
         if (domeinlist !== '') {
             domeinlist += ', \r\n' + domeinnaam + ' ("Aanvraag")';
@@ -46,7 +46,7 @@ function gebruikdomein() {
             $('#aanvraag').val('aanvraag');
 
         }
-        else{
+        else {
             domeinlist = domeinnaam + ' ("Aanvraag")';
             $('#domeinnaam').val(domeinlist);
             $('#aanvraag').val('aanvraag');
@@ -55,16 +55,16 @@ function gebruikdomein() {
 }
 
 function verhuisdomein() {
-    if (document.getElementById('provider').value !== null && document.getElementById('provider').value !== ''){
+    if (document.getElementById('provider').value !== null && document.getElementById('provider').value !== '') {
         provider = document.getElementById('provider').value;
-        if (domeinnaam !== '' && domeinnaam!== null) {
+        if (domeinnaam !== '' && domeinnaam !== null) {
             $("#gebruik").attr("disabled", "disabled");
             if (domeinlist !== '') {
                 domeinlist += ', \r\n' + domeinnaam + ' (verhuizing) ' + '(provider: ' + provider + ')';
                 $('#domeinnaam').val(domeinlist);
                 $('#verhuizing').val('verhuizing');
             }
-            else{
+            else {
                 domeinlist = domeinnaam + ' (verhuizing) ' + '(provider: ' + provider + ')';
                 $('#domeinnaam').val(domeinlist);
                 console.log(domeinlist);
@@ -72,46 +72,46 @@ function verhuisdomein() {
             }
         }
     }
-    else{
+    else {
         alert('Vul de huidige provider in.')
     }
 }
 
-function toggleEmail(value)
-{
+function toggleEmail(value) {
     if (value === 'geen') {
         $('#grootte').text('Geen');
-        $('#mailpakket-2').toggleClass('disabled',true);
-        $('#hostmail').prop('disabled',true);
-        $('#hostmail').toggleClass('disabled',true);
+        $('#mailpakket-2').toggleClass('disabled', true);
+        $('#hostmail').prop('disabled', true);
+        $('#hostmail').toggleClass('disabled', true);
         $('#hostmail').prop("checked", false)
         $('#mpak1').prop("checked", true)
     }
-    else if (value === 'pakket1'){
+    else if (value === 'pakket1') {
         $('#grootte').text('600 MB');
-        $('#mailpakket-2').toggleClass('disabled',false);
-        $('#hostmail').prop('disabled',false);
-        $('#hostmail').toggleClass('disabled',false);
+        $('#mailpakket-2').toggleClass('disabled', false);
+        $('#hostmail').prop('disabled', false);
+        $('#hostmail').toggleClass('disabled', false);
     }
-    else if (value === 'pakket2'){
+    else if (value === 'pakket2') {
         $('#grootte').text('1 GB');
-        $('#mailpakket-2').toggleClass('disabled',false);
-        $('#hostmail').prop('disabled',false);
-        $('#hostmail').toggleClass('disabled',false);
+        $('#mailpakket-2').toggleClass('disabled', false);
+        $('#hostmail').prop('disabled', false);
+        $('#hostmail').toggleClass('disabled', false);
     }
-    else if (value === 'pakket3'){
+    else if (value === 'pakket3') {
         $('#grootte').text('2,5 GB');
-        $('#mailpakket-2').toggleClass('disabled',false);
-        $('#hostmail').prop('disabled',false);
-        $('#hostmail').toggleClass('disabled',false);
+        $('#mailpakket-2').toggleClass('disabled', false);
+        $('#hostmail').prop('disabled', false);
+        $('#hostmail').toggleClass('disabled', false);
     }
-    else if (value === 'pakket4'){
+    else if (value === 'pakket4') {
         $('#grootte').text('n.t.b.');
-        $('#mailpakket-2').toggleClass('disabled',false);
-        $('#hostmail').prop('disabled',false);
-        $('#hostmail').toggleClass('disabled',false);
+        $('#mailpakket-2').toggleClass('disabled', false);
+        $('#hostmail').prop('disabled', false);
+        $('#hostmail').toggleClass('disabled', false);
     }
 }
+
 function validateForm() {
     var error = '';
     var domein = document.forms["bestelling"]["domeinnaam"].value;
@@ -147,19 +147,17 @@ function validateForm() {
         error += 'U moet eerst akkoord gaan met de Algemene Voorwaarden.';
     }
 
-    if (error != '')
-    {
+    if (error != '') {
         alert(error);
         return false;
     }
 }
 
-function togglemailbox(value)
-{
+function togglemailbox(value) {
     if (value !== 'geen') {
         $('#mailbox').show();
     }
-    else{
+    else {
         $('#mailbox').hide();
     }
 }

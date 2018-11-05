@@ -78,7 +78,7 @@
                             Voer uw domeinnaam in <u>zonder</u> extensie.<br>
                             <form method="post" action="./" id="form">
                                 <input type="text" autocomplete="off" id="Search" name="domain">
-                                <input type="submit" id="Submit" value="Submit">
+                                <input type="submit" id="Submit" value="Controleren">
                             </form>
                             <div id="loading"><img alt="Loading..." style="height: 50px; width: 50px;"
                                                    src="images/load.gif"></div>

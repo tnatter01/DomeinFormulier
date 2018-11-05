@@ -2,8 +2,6 @@
 set_time_limit(0);
 ob_start();
 
-########### Extensions to be checked
-#, , , , , , , nu, uk, co.uk, , , ,
 $extensions = array(
     '.nl' => array('whois.domain-registry.nl','is free'), #!
     '.be' => array('whois.dns.be','Status:	AVAILABLE'), #!

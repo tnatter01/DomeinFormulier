@@ -1,24 +1,26 @@
 /* CSS Document */
 body {
-     height:100%;
-     margin:0;
-     padding:0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 #AjaxBox {
-	visibility: hidden;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width:100%;
-	height:100%;
-	z-index:2000;
-	background-color:#fff;
-	-moz-opacity: 0.5;
-	opacity:.50;
-	filter: alpha(opacity=50);
+    visibility: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    background-color: #fff;
+    -moz-opacity: 0.5;
+    opacity: .50;
+    filter: alpha(opacity=50);
 }
-#loading{
-	position: absolute;
-	left: 45%;
-	top: 45%;
+
+#loading {
+    position: absolute;
+    left: 45%;
+    top: 45%;
 }

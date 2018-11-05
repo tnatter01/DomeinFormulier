@@ -7,11 +7,10 @@
 	*                        
 */
 
-function pageLoading(divId)
-{
-	//$(divId).style.display='block';
-	//$(divId).style.visibility = 'visible';
-	$(divId).innerHTML = '<div id="loading"><img alt="Loading..." src="images/ajax-loader-big.gif"/></div>';
+function pageLoading(divId) {
+    //$(divId).style.display='block';
+    //$(divId).style.visibility = 'visible';
+    $(divId).innerHTML = '<div id="loading"><img alt="Loading..." src="images/ajax-loader-big.gif"/></div>';
 }
 
 /*
@@ -22,14 +21,24 @@ function pageLoading(divId)
 	*                        
 */
 
-function pageComplete(divId)
-{
-	$(divId).innerHTML = '';
-	//$(divId).style.display='none';
-	//$(divId).style.visibility = 'hidden';
+function pageComplete(divId) {
+    $(divId).innerHTML = '';
+    //$(divId).style.display='none';
+    //$(divId).style.visibility = 'hidden';
 }
 
 
-function getResult(formId, divId, URL){
-	new Ajax.Updater(divId, URL, {asynchronous:true, evalScripts:true, parameters:Form.serialize(formId), onLoading:function(request) {pageLoading(divId);},onComplete:function(request, json) {pageComplete(divId);}, requestHeaders:['X-Update', divId]});
+function getResult(formId, divId, URL) {
+    new Ajax.Updater(divId, URL, {
+        asynchronous: true,
+        evalScripts: true,
+        parameters: Form.serialize(formId),
+        onLoading: function (request) {
+            pageLoading(divId);
+        },
+        onComplete: function (request, json) {
+            pageComplete(divId);
+        },
+        requestHeaders: ['X-Update', divId]
+    });
 }
