@@ -11,7 +11,7 @@ $result = mysqli_query($conn,"SELECT * FROM aanvragen");
 
 echo "<h1>Domeinaanvragen</h1><br>";
 
-echo "<table class=\"table table-hover table-dark\">
+echo "<table class=\"table table-striped table-hover table-dark text-center\">
     <thead>
     <tr>
         <th scope=\"col\">#</th>
@@ -29,6 +29,7 @@ echo "<table class=\"table table-hover table-dark\">
         <th scope=\"col\">Email adres</th>
         <th scope=\"col\">KvK nummer</th>
         <th scope=\"col\">Opmerking</th>
+        <th scope=\"col\">Status</th>
         <th scope='col'>Verwijderen</th>
     </tr>
     </thead>
@@ -55,6 +56,7 @@ while($row = mysqli_fetch_array($result))
     echo "<td>" . $row['email'] . "</td>";
     echo "<td>" . $row['kvk'] . "</td>";
     echo "<td>" . $row['opmerking'] . "</td>";
+    echo "<td>" . $row['status'] . "</td>";
     echo "<td><a href='delete.php?id=" . $row['aanvraag_id'] . "'><i class=\"fas fa-trash-alt\"></a></i></td>";
     echo "</tr>";
 
@@ -65,4 +67,84 @@ echo "</tbody>
 
 mysqli_close($conn);
 ?>
+<hr>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="text-center">Hosting</h2>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1">
+                    <div class="box-part text-center">
+                        <div class="title">
+                            <h4>Geen hosting</h4>
+                        </div>
+                        <div class="text">
+                                        <span>
+                                            Alleen domeinnaam, geen hosting.<br><br><br>
+                                        </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
+                    <div class="box-part text-center">
+                        <div class="title">
+                            <h4>Pakket 1</h4>
+                        </div>
+                        <div class="text">
+                                            <span>
+                                                Schijfruimte: 600mb<br>
+                                                Dataverkeer: 1GB<br>
+                                                Kosten per jaar: €69,-<br><br>
+                                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
+                    <div class="box-part text-center">
+                        <div class="title">
+                            <h4>Pakket 2</h4>
+                        </div>
+                        <div class="text">
+                                            <span>
+                                                Schijfruimte: 1GB<br>
+                                                Dataverkeer: 3GB<br>
+                                                Kosten per jaar: €112,-<br><br>
+                                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
+                    <div class="box-part text-center">
+                        <div class="title">
+                            <h4>Pakket 3</h4>
+                        </div>
+                        <div class="text">
+                                            <span>
+                                                Schijfruimte: 2,5GB<br>
+                                                Dataverkeer: 4GB<br>
+                                                Kosten per jaar: €270,-<br><br>
+                                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
+                    <div class="box-part text-center">
+                        <div class="title">
+                            <h4>Magento hosting</h4>
+                        </div>
+                        <div class="text">
+                                            <span>
+                                                Wij zullen z.s.m contact met u opnemen.<br><br><br>
+                                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

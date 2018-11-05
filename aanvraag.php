@@ -65,9 +65,9 @@ if(isset($_POST['submit'])){
 
     foreach ($domeinnamenArray as $domein){
         $sql = "INSERT INTO aanvragen (domeinen, hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats, 
-                telefoon, mobiel, email, kvk, opmerking) VALUES ('". $domein . "','". $hosting . "','" . $mailing . "','" . $voornaam .
+                telefoon, mobiel, email, kvk, opmerking, status) VALUES ('". $domein . "','". $hosting . "','" . $mailing . "','" . $voornaam .
             "','" . $achternaam . "','" . $bedrijfsnaam . "','" . $adres . "','" . $postcode . "','" . $woonplaats . "','" . $telefoon . "','" . $mobiel
-            . "','" . $email . "','" . $kvk . "','" . $opmerking . "');";
+            . "','" . $email . "','" . $kvk . "','" . $opmerking . "',\"Aangevraagd\");";
         mysqli_query($conn, $sql);
     }
 

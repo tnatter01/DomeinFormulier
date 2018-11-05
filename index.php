@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--Metadata-->
+    <!--Metadata-->
     <meta charset="UTF-8">
     <meta name="keywords" content="Domeinaanvraag, Aanvraagformulier, Nubix, Domaincheck">
     <meta name="description" content="Formulier met domeincheck voor aanvraag domein">
     <meta name="author" content="Twan Natter">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--Title-->
+    <!--Title-->
     <title>Domein aanvragen</title>
-<!--Favicon-->
+    <!--Favicon-->
     <link rel="shortcut icon" href="images/favicon.ico">
-<!--Javascript-->
+    <!--Javascript-->
     <script src="js/common.js"></script>
     <script src="lib/prototype.js"></script>
     <script src="jquery-1.2.6.min.js"></script>
-<!--    Stylesheets-->
+    <!--    Stylesheets-->
     <link rel="stylesheet" type="text/css" href="css/fontawesome/531.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/337.css">
-    <link href="main.css" rel="stylesheet" />
+    <link href="main.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!--jQuery-->
+    <!--jQuery-->
     <script>
 
-        function aanvraag(){
+        function aanvraag() {
             var domeinnaam = document.getElementById('Search').value;
-                $('#aanvraagcheck:checked').each(function() {
-                    $('#domeinnaamarea').append(domeinnaam + "." +this.value + "(Aanvraag), \n");
-                });
+            $('#aanvraagcheck:checked').each(function () {
+                $('#domeinnaamarea').append(domeinnaam + "." + this.value + "(Aanvraag), \n");
+            });
         }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             var loading;
             var results;
             loading = document.getElementById('loading');
             results = document.getElementById('results');
 
-            $('#submit').click(function(){
-               $.post("aanvraag.php", aangevraagd);
+            $('#submit').click(function () {
+                $.post("aanvraag.php", aangevraagd);
             });
 
-            $('#Submit').click( function() {
-                if($('#Search').val() == "")
-                {alert('please enter your domain');return false;}
+            $('#Submit').click(function () {
+                if ($('#Search').val() == "") {
+                    alert('please enter your domain');
+                    return false;
+                }
                 results.style.display = 'none';
                 $('#results').html('');
                 loading.style.display = 'inline';
-                $.post('process.php?domain=' + escape($('#Search').val()),{
-                }, function(response){
+                $.post('process.php?domain=' + escape($('#Search').val()), {}, function (response) {
                     results.style.display = 'block';
                     $('#results').html(unescape(response));
                     loading.style.display = 'none';
@@ -63,7 +64,8 @@
 </head>
 
 <body>
-<noscript><span style="color:red;">Je browser ondersteunt geen JavaScript! Je hebt dit nodig om deze pagina goed te kunnen gebruiken.</span></noscript>
+<noscript><span style="color:red;">Je browser ondersteunt geen JavaScript! Je hebt dit nodig om deze pagina goed te kunnen gebruiken.</span>
+</noscript>
 <div class="aanvraag">
     <div class="domeincheck">
         <div class="container">
@@ -78,24 +80,23 @@
                                 <input type="text" autocomplete="off" id="Search" name="domain">
                                 <input type="submit" id="Submit" value="Submit">
                             </form>
-                            <div id="loading"><img alt="Loading..." style="height: 50px; width: 50px;" src="images/load.gif"></div>
+                            <div id="loading"><img alt="Loading..." style="height: 50px; width: 50px;"
+                                                   src="images/load.gif"></div>
                             <div id="results">
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Domeinnaam</h2>
                         <div class="panel-body">
                             <form method="post" action="aanvraag.php">
-                            <strong>Domeinna(a)m(en):</strong><a style="color:red">*</a>
-                            <br>
-                            <textarea id="domeinnaamarea" rows="5" readonly required
-                                      name="domeinnaamarea"
-                                      style="width: 100%; resize:none;"></textarea>
+                                <strong>Domeinna(a)m(en):</strong><a style="color:red">*</a>
+                                <br>
+                                <textarea id="domeinnaamarea" rows="5" readonly required
+                                          name="domeinnaamarea"
+                                          style="width: 100%; resize:none;"></textarea>
                         </div>
                     </div>
                 </div>
@@ -107,16 +108,16 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1">
-                                <div class="box-part text-center">
-                                    <div class="title">
-                                        <h4>Geen hosting</h4>
-                                    </div>
-                                    <div class="text">
+                                    <div class="box-part text-center">
+                                        <div class="title">
+                                            <h4>Geen hosting</h4>
+                                        </div>
+                                        <div class="text">
                                         <span>
                                             Alleen domeinnaam, geen hosting.<br><br><br>
                                             <input type="radio" name="hosting" value="geen-hosting">
                                         </span>
-                                    </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -187,14 +188,14 @@
                 </div>
 
 
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Email <span style="color:red;">*</span></h2>
                         <div class="panel-body">
 
                             <strong>Veel van onze klanten maken gebruik van Exchange Online.<br>
-                                <a href="https://www.nubix.nl/domein.php/exchange_online">Klik hier</a> voor uw voordelen van het gebruik van
+                                <a href="https://www.nubix.nl/domein.php/exchange_online">Klik hier</a> voor uw
+                                voordelen van het gebruik van
                                 <a href="https://www.nubix.nl/domein.php/exchange_online">Exchange Online</a>.
                             </strong>
 
@@ -258,59 +259,74 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Gegevens</h2>
-                            <div class="panel-body">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="Voornaam"><i class="fas fa-user"></i> Voornaam<span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="Voornaam" name="Voornaam" placeholder="Voornaam" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="Achternaam"><i class="fas fa-user"></i> Achternaam<span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="Achternaam" name="Achternaam"
-                                                   placeholder="Achternaam" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="Adres"><i class="fas fa-map-marker-alt"></i> Adres<span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="Adres" name="Adres" placeholder="Adres" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="Postcode"><i class="fas fa-map-marker-alt"></i> Postcode<span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="Postcode" name="Postcode" placeholder="Postcode" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="Woonplaats"><i class="fas fa-map-marker-alt"></i> Woonplaats<span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="Woonplaats" name="Woonplaats" placeholder="Woonplaats"
-                                                   required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="Email"><i class="fas fa-envelope"></i> Email adres<span style="color:red;">*</span></label>
-                                            <input type="email" class="form-control" id="Email" placeholder="Email adres" name="Email" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="Telefoon"><i class="fas fa-phone"></i> Telefoon<span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="Telefoon" placeholder="Telefoon" name="Telefoon" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="Mobiel"><i class="fas fa-mobile"></i> Mobiel</label>
-                                            <input type="text" class="form-control" id="Mobiel" placeholder="Mobiel" name="Mobiel">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="Bedrijfsnaam"><i class="fas fa-building"></i> Bedrijfsnaam</label>
-                                            <input type="text" class="form-control" id="Bedrijfsnaam" name="Bedrijfsnaam" placeholder="Bedrijfsnaam">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="KvK"><i class="fas fa-file-invoice-dollar"></i> KvK nummer</label>
-                                            <input type="text" class="form-control" id="KvK" placeholder="KvK nummer" name="KvK" maxlength="8">
-                                        </div>
-                                    </div>
+                        <div class="panel-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Voornaam"><i class="fas fa-user"></i> Voornaam<span
+                                                style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" id="Voornaam" name="Voornaam"
+                                           placeholder="Voornaam" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Achternaam"><i class="fas fa-user"></i> Achternaam<span
+                                                style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" id="Achternaam" name="Achternaam"
+                                           placeholder="Achternaam" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Adres"><i class="fas fa-map-marker-alt"></i> Adres<span
+                                                style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" id="Adres" name="Adres" placeholder="Adres"
+                                           required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Postcode"><i class="fas fa-map-marker-alt"></i> Postcode<span
+                                                style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" id="Postcode" name="Postcode"
+                                           placeholder="Postcode" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Woonplaats"><i class="fas fa-map-marker-alt"></i> Woonplaats<span
+                                                style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" id="Woonplaats" name="Woonplaats"
+                                           placeholder="Woonplaats"
+                                           required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Email"><i class="fas fa-envelope"></i> Email adres<span
+                                                style="color:red;">*</span></label>
+                                    <input type="email" class="form-control" id="Email" placeholder="Email adres"
+                                           name="Email" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Telefoon"><i class="fas fa-phone"></i> Telefoon<span style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" id="Telefoon" placeholder="Telefoon"
+                                           name="Telefoon" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Mobiel"><i class="fas fa-mobile"></i> Mobiel</label>
+                                    <input type="text" class="form-control" id="Mobiel" placeholder="Mobiel"
+                                           name="Mobiel">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Bedrijfsnaam"><i class="fas fa-building"></i> Bedrijfsnaam</label>
+                                    <input type="text" class="form-control" id="Bedrijfsnaam" name="Bedrijfsnaam"
+                                           placeholder="Bedrijfsnaam">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="KvK"><i class="fas fa-file-invoice-dollar"></i> KvK nummer</label>
+                                    <input type="text" class="form-control" id="KvK" placeholder="KvK nummer" name="KvK"
+                                           maxlength="8">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -327,8 +343,10 @@
                                           style="width: 100%; resize:none;"></textarea>
                             </div>
                             <br>
-                            <a href="http://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de Algemene Voorwaarden te lezen.</a><br>
-                            <input type="checkbox" id="akkoord" value="akkoord" name="akkoord" required>Ik ga akkoord met de Algemene Voorwaarden
+                            <a href="http://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de Algemene
+                                Voorwaarden te lezen.</a><br>
+                            <input type="checkbox" id="akkoord" value="akkoord" name="akkoord" required>Ik ga akkoord
+                            met de Algemene Voorwaarden
                             van Nubix BV.
                             <span style="color:red;">*</span>
                             <br>
@@ -339,10 +357,10 @@
                         </div>
                     </div>
                 </div>
-                    </div>
-                </div>
-    </form>
             </div>
+        </div>
+        </form>
+    </div>
 </div>
 
 </body>
