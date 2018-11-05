@@ -1,5 +1,6 @@
 <head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
@@ -7,7 +8,7 @@
 
 include("config.php");
 
-$result = mysqli_query($conn,"SELECT * FROM aanvragen");
+$result = mysqli_query($conn, "SELECT * FROM aanvragen");
 
 echo "<h1>Domeinaanvragen</h1><br>";
 
@@ -36,9 +37,7 @@ echo "<table class=\"table table-striped table-hover table-dark text-center\">
     <tbody>";
 
 
-
-while($row = mysqli_fetch_array($result))
-{
+while ($row = mysqli_fetch_array($result)) {
 
     echo "<tr>";
     echo "<td>" . $row['aanvraag_id'] . "</td>";

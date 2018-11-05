@@ -1,30 +1,33 @@
 #loading {
-	display: none;
+    display: none;
 }
 
 h4.taken span {
-	background:none repeat scroll 0 0 #F08F78;
-}
-h4.taken:hover{
-	background:none repeat scroll 0 0 #FFC5B7;
+    background: none repeat scroll 0 0 #F08F78;
 }
 
- 
+h4.taken:hover {
+    background: none repeat scroll 0 0 #FFC5B7;
+}
+
 h4 span {
-	font-size:12px;
-	font-style:normal;
-	margin-right:4px;
+    font-size: 12px;
+    font-style: normal;
+    margin-right: 4px;
 }
 
 h4.available:hover {
-	background:none repeat scroll 0 0 #DDF2BC;
+    background: none repeat scroll 0 0 #DDF2BC;
 }
- h4.available span { background: #bce67b; }
 
-body{
-	background-image: url("images/background.png");
-	background-repeat: repeat-y;
-	background-size: 100% auto;
+h4.available span {
+    background: #bce67b;
+}
+
+body {
+    background-image: url("images/background.png");
+    background-repeat: repeat-y;
+    background-size: 100% auto;
 }
  
  

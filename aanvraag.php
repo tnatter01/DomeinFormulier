@@ -1,14 +1,15 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
+
 require 'vendor/autoload.php';
 include("config.php");
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 
     require_once("index.php");
     $domeinnamen = $_POST['domeinnaamarea'];
-    $domeinnamen = str_replace("(Aanvraag)","",$domeinnamen);
+    $domeinnamen = str_replace("(Aanvraag)", "", $domeinnamen);
     $domeinnamenArray = (explode(",", $domeinnamen));
     array_pop($domeinnamenArray);
     $hosting = $_POST['hosting'];
@@ -29,7 +30,7 @@ if(isset($_POST['submit'])){
     $hostingDesc = null;
     $mailingDesc = null;
 
-    switch($hosting){
+    switch ($hosting) {
         case "geen-hosting":
             $hostingDesc = "Geen hosting: <br>Alleen domeinnaam, geen hosting.";
             break;
@@ -49,7 +50,7 @@ if(isset($_POST['submit'])){
             $hostingDesc = "Geen hosting gekozen, contact opnemen met klant.";
     }
 
-    switch($mailing){
+    switch ($mailing) {
         case "exchange":
             $mailingDesc = "Exchange online:<br>Mailbox: 50GB <br> Kosten per maand: &#x20AC;3,40 <br> Set-up kosten";
             break;
@@ -63,30 +64,29 @@ if(isset($_POST['submit'])){
             $mailingDesc = "Geen mailing gekozen, contact opnemen met klant.";
     }
 
-    foreach ($domeinnamenArray as $domein){
+    foreach ($domeinnamenArray as $domein) {
         $sql = "INSERT INTO aanvragen (domeinen, hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats, 
-                telefoon, mobiel, email, kvk, opmerking, status) VALUES ('". $domein . "','". $hosting . "','" . $mailing . "','" . $voornaam .
+                telefoon, mobiel, email, kvk, opmerking, status) VALUES ('" . $domein . "','" . $hosting . "','" . $mailing . "','" . $voornaam .
             "','" . $achternaam . "','" . $bedrijfsnaam . "','" . $adres . "','" . $postcode . "','" . $woonplaats . "','" . $telefoon . "','" . $mobiel
             . "','" . $email . "','" . $kvk . "','" . $opmerking . "',\"Aangevraagd\");";
         mysqli_query($conn, $sql);
     }
 
 
+    $mail = new PHPMailer(); // create a new object
+    $mail->IsSMTP(); // enable SMTP
+    $mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
+    $mail->SMTPAuth = true; // authentication enabled
+    $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
+    $mail->Host = "smtp.office365.com";
+    $mail->Port = 587;
 
-        $mail = new PHPMailer(); // create a new object
-        $mail->IsSMTP(); // enable SMTP
-        $mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
-        $mail->SMTPAuth = true; // authentication enabled
-        $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-        $mail->Host = "smtp.office365.com";
-        $mail->Port = 587;
-
-        $mail->IsHTML(true);
-        $mail->Username = $mailUsername;
-        $mail->Password = $mailPassword;
-        $mail->SetFrom("t.natter@nubix.nl", "Nubix Support");
-        $mail->Subject = "Domeinaanvraag";
-        $mail->Body = "
+    $mail->IsHTML(true);
+    $mail->Username = $mailUsername;
+    $mail->Password = $mailPassword;
+    $mail->SetFrom("t.natter@nubix.nl", "Nubix Support");
+    $mail->Subject = "Domeinaanvraag";
+    $mail->Body = "
             <tr><td><h1>Domeinaanvraag</h1></td></tr>
             <tr>
                 <td>
@@ -157,13 +157,13 @@ if(isset($_POST['submit'])){
                             <td colspan=\"5\">$opmerking</td>
                         </tr>
             </table>";
-        $mail->AddAddress($mailToNubix);
+    $mail->AddAddress($mailToNubix);
 
-        if (!$mail->Send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
-        } else{
-            echo '<script>alert("Uw aanvraag is verstuurd")</script>';
-        }
+    if (!$mail->Send()) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    } else {
+        echo '<script>alert("Uw aanvraag is verstuurd")</script>';
+    }
 }
 ?>
 
