@@ -693,7 +693,8 @@
                 }
 
                 include("config.php");
-                $result = mysqli_query($conn, "SELECT * FROM aanvragen WHERE aanvraag_id=$aanvraag_id");
+                $sql = "SELECT * FROM aanvragen WHERE aanvraag_id=$aanvraag_id";
+                $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_array($result)
                 ?>
 
@@ -701,110 +702,111 @@
 
                     <!-- edit form column -->
                     <div class="col-md-9 personal-info">
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" action="bewerken.php" method="post" role="form">
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">ID:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $aanvraag_id; ?>"
-                                           disabled>
+                                    <input name="id" class="form-control" type="text" value="<?php echo $aanvraag_id; ?>"
+                                           readonly required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Domeinnaam</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['domeinen']; ?>">
+                                    <input name="domein" class="form-control" type="text" value="<?php echo $row['domeinen']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Hosting pakket:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['hosting']; ?>"
-                                           disabled>
+                                    <input name="hosting" class="form-control" type="text" value="<?php echo $row['hosting']; ?>"
+                                           readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Mail pakket:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['maling']; ?>"
-                                           disabled>
+                                    <input name="mailing" class="form-control" type="text" value="<?php echo $row['maling']; ?>"
+                                           readonly>
+
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Voornaam:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['voornaam']; ?>">
+                                    <input name="voornaam" class="form-control" type="text" value="<?php echo $row['voornaam']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Achternaam:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['achternaam']; ?>">
+                                    <input name="achternaam" class="form-control" type="text" value="<?php echo $row['achternaam']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Email:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['email']; ?>">
+                                    <input name="email" class="form-control" type="text" value="<?php echo $row['email']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Bedrijfsnaam:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['bedrijfsnaam']; ?>">
+                                    <input name="bedrijfsnaam" class="form-control" type="text" value="<?php echo $row['bedrijfsnaam']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Adres:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['adres']; ?>">
+                                    <input name="adres" class="form-control" type="text" value="<?php echo $row['adres']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Postcode:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['postcode']; ?>">
+                                    <input name="postcode" class="form-control" type="text" value="<?php echo $row['postcode']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Woonplaats:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['woonplaats']; ?>">
+                                    <input name="woonplaats" class="form-control" type="text" value="<?php echo $row['woonplaats']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Kvk:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['kvk']; ?>">
+                                    <input name="kvk" class="form-control" type="text" value="<?php echo $row['kvk']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Telefoon:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['telefoon']; ?>">
+                                    <input name="telefoon" class="form-control" type="text" value="<?php echo $row['telefoon']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Mobiel:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['mobiel']; ?>">
+                                    <input name="mobiel" class="form-control" type="text" value="<?php echo $row['mobiel']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Opmerking:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['opmerking']; ?>">
+                                    <input name="opmerking" class="form-control" type="text" value="<?php echo $row['opmerking']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Status:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="<?php echo $row['status']; ?>" disabled>
+                                    <input name="status" class="form-control" type="text" value="<?php echo $row['status']; ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"></label>
                                 <div class="col-md-8">
-                                    <input type="button" class="btn btn-primary" value="Save Changes">
+                                    <input type="submit" class="btn btn-primary" value="Save Changes">
                                     <span></span>
                                     <input type="reset" class="btn btn-default" value="Cancel">
                                 </div>

@@ -14,7 +14,6 @@ if (isset($_POST['submit'])) {
     $domeinnamenArray = (explode(",", $domeinnamen));
     array_pop($domeinnamenArray);
     $hosting = $_POST['hosting'];
-    $aanvraagsdatum = date("d-m-Y");
     $mailing = $_POST['mailing'];
     $voornaam = $_POST['Voornaam'];
     $achternaam = $_POST['Achternaam'];
@@ -27,7 +26,6 @@ if (isset($_POST['submit'])) {
     $email = $_POST['Email'];
     $kvk = $_POST['KvK'];
     $opmerking = $_POST['Opmerking'];
-    $goedgekeurd = "0";
     $hostingDesc = null;
     $mailingDesc = null;
 

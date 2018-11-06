@@ -36,6 +36,7 @@ include("config.php");
         echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
         echo '<script>alert("Uw aanvraag is verstuurd")</script>';
+        header("location: tickets.php");
     }
 
 ?>
