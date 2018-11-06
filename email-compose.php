@@ -675,36 +675,53 @@
         <!-- Start content -->
 
         <div class="content">
-            <h4 class="page-title float-left">Beantwoorden</h4>
-            <br>
-            <br>
-            <?php
-            $email = null;
-            $domein = null;
-            $aanvraag_id = null;
-            if (isset($_GET["email"])) {
-                $email = $_GET["email"];
-            }
-            if (isset($_GET["domein"])) {
-                $domein = $_GET["domein"];
-            }
-            if (isset($_GET["id"])) {
-                $aanvraag_id = $_GET["id"];
-            }
-            ?>
-            <form action="sendmail.php" method="post">
-                <input type="hidden" required id="Id" placeholder="00" name="Id" value="<?php echo $aanvraag_id; ?>">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email adres</label>
-                    <input type="email" class="form-control" id="Email" placeholder="Email adres"
-                           name="Email" value="<?php echo $email; ?>" required>
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="page-title-box">
+
+                            <h4 class="page-title float-left">Beantwoorden</h4>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+
+                    </div>
+
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Onderwerp</label>
-                    <input type="text" class="form-control" id="Onderwerp" placeholder="Onderwerp"
-                           name="Onderwerp" value="Domeinaanvraag <?php echo $domein; ?>" required>
-                </div>
-                <textarea name="summernote" id="summernote" class="summernote">
+
+                <br>
+                <br>
+                <?php
+                $email = null;
+                $domein = null;
+                $aanvraag_id = null;
+                if (isset($_GET["email"])) {
+                    $email = $_GET["email"];
+                }
+                if (isset($_GET["domein"])) {
+                    $domein = $_GET["domein"];
+                }
+                if (isset($_GET["id"])) {
+                    $aanvraag_id = $_GET["id"];
+                }
+                ?>
+                <form action="sendmail.php" method="post">
+                    <input type="hidden" required id="Id" placeholder="00" name="Id"
+                           value="<?php echo $aanvraag_id; ?>">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email adres</label>
+                        <input type="email" class="form-control" id="Email" placeholder="Email adres"
+                               name="Email" value="<?php echo $email; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Onderwerp</label>
+                        <input type="text" class="form-control" id="Onderwerp" placeholder="Onderwerp"
+                               name="Onderwerp" value="Domeinaanvraag <?php echo $domein; ?>" required>
+                    </div>
+                    <textarea name="summernote" id="summernote" class="summernote">
                     <div>
                     Beste klant, <br><br>
 
@@ -729,15 +746,16 @@
                 </span>
                         </div>
                 </textarea>
-                <div class="form-group">
-                    <input type="checkbox" class="checkbox" checked id="Status"
-                           name="Status">
-                    <label for="checkbox1">
-                        Verander status naar: <span style="font-weight: bolder">Beantwoord</span>
-                    </label>
-                </div>
-                <input type="submit" id="submit" class="submit" value="Verzenden">
-            </form>
+                    <div class="form-group">
+                        <input type="checkbox" class="checkbox" checked id="Status"
+                               name="Status">
+                        <label for="checkbox1">
+                            Verander status naar: <span style="font-weight: bolder">Beantwoord</span>
+                        </label>
+                    </div>
+                    <input type="submit" id="submit" class="submit" value="Verzenden">
+                </form>
+            </div>
         </div> <!-- content -->
 
         <footer class="footer text-right">
