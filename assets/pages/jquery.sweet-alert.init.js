@@ -149,18 +149,18 @@
         //Ajax
         $('#ajax-alert').click(function () {
             swal({
-                title: 'Submit email to run ajax request',
-                input: 'email',
+                title: 'Voer artikelnummer in:',
+                input: 'text',
                 showCancelButton: true,
-                confirmButtonText: 'Submit',
+                confirmButtonText: 'Bijwerken',
                 showLoaderOnConfirm: true,
                 confirmButtonClass: 'btn btn-success',
                 cancelButtonClass: 'btn btn-danger m-l-10',
-                preConfirm: function (email) {
+                preConfirm: function (text) {
                     return new Promise(function (resolve, reject) {
                         setTimeout(function () {
-                            if (email === 'taken@example.com') {
-                                reject('This email is already taken.')
+                            if (text === 'test') {
+                                reject('Dit nummer bestaat niet.')
                             } else {
                                 resolve()
                             }
@@ -168,11 +168,11 @@
                     })
                 },
                 allowOutsideClick: false
-            }).then(function (email) {
+            }).then(function (text) {
                 swal({
                     type: 'success',
-                    title: 'Ajax request finished!',
-                    html: 'Submitted email: ' + email
+                    title: 'Uw artikel wordt bijgewerkt!',
+                    html: 'Artikel dat wordt bijgewerkt: ' + text
                 })
             })
         });
