@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
     require_once("index.php");
     $domeinnamen = $_POST['domeinnaamarea'];
     $domeinnamen = str_replace("(Aanvraag)", "", $domeinnamen);
+    $domeinnamen = str_replace(" ", "", $domeinnamen);
     $domeinnamenArray = (explode(",", $domeinnamen));
     array_pop($domeinnamenArray);
     $hosting = $_POST['hosting'];

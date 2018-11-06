@@ -303,7 +303,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-target"></i> <span> Admin UI </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -337,7 +337,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> UI Kit </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -381,7 +381,7 @@
                     <li>
 
                         <a href="tickets.html"><i class="fi-help"></i><span
-                                class="badge badge-danger pull-right">New</span> <span> Tickets </span></a>
+                                    class="badge badge-danger pull-right">New</span> <span> Tickets </span></a>
 
                     </li>
 
@@ -389,7 +389,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-box"></i><span> Icons </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -421,7 +421,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Graphs </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -453,7 +453,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-mail"></i><span> Email </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -478,7 +478,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-disc"></i><span
-                                class="badge badge-warning pull-right">12</span> <span> Forms </span></a>
+                                    class="badge badge-warning pull-right">12</span> <span> Forms </span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -514,7 +514,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-layout"></i> <span> Tables </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -543,7 +543,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-map"></i> <span> Maps </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -566,7 +566,7 @@
                     <li>
 
                         <a href="javascript: void(0);"><i class="fi-paper-stack"></i><span> Pages </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -598,7 +598,7 @@
                     <li class="has_sub">
 
                         <a href="javascript:void(0);"><i class="fi-marquee-plus"></i><span> Extra Pages </span> <span
-                                class="menu-arrow"></span></a>
+                                    class="menu-arrow"></span></a>
 
                         <ul class="nav-second-level" aria-expanded="false">
 
@@ -675,26 +675,37 @@
         <!-- Start content -->
 
         <div class="content">
+            <h4 class="page-title float-left">Beantwoorden</h4>
+            <br>
+            <br>
             <?php
             $email = null;
-            $domein  = null;
-            if(isset($_GET["email"])){
+            $domein = null;
+            $aanvraag_id = null;
+            if (isset($_GET["email"])) {
                 $email = $_GET["email"];
             }
-            if(isset($_GET["domein"])){
-                $email = $_GET["domein"];
+            if (isset($_GET["domein"])) {
+                $domein = $_GET["domein"];
+            }
+            if (isset($_GET["id"])) {
+                $aanvraag_id = $_GET["id"];
             }
             ?>
-            <form method="post">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email adres</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email adres" value="<?php echo $email;?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Onderwerp</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Onderwerp" value="Domeinaanvraag <?php echo $domein;?>">
-            </div>
-                <textarea class="form-group summernote">
+            <form action="sendmail.php" method="post">
+                <input type="hidden" required id="Id" placeholder="00" name="Id" value="<?php echo $aanvraag_id; ?>">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email adres</label>
+                    <input type="email" class="form-control" id="Email" placeholder="Email adres"
+                           name="Email" value="<?php echo $email; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Onderwerp</label>
+                    <input type="text" class="form-control" id="Onderwerp" placeholder="Onderwerp"
+                           name="Onderwerp" value="Domeinaanvraag <?php echo $domein; ?>" required>
+                </div>
+                <textarea name="summernote" id="summernote" class="summernote">
+                    <div>
                     Beste klant, <br><br>
 
                     Hartelijk dank voor uw aanvraag van nubix.eu.<br>
@@ -716,15 +727,16 @@
                 KvK	52297764 Enschede<br>
                 IBAN   NL76RABO0111115582<br>
                 </span>
+                        </div>
                 </textarea>
                 <div class="form-group">
-                        <input id="checkbox1" type="checkbox">
-                        <label for="checkbox1">
-                            Verander status naar: <span style="font-weight: bolder">Beantwoord</span>
-                        </label>
-                    </div>
-                <button type="submit" class="btn btn-purple waves-effect waves-light">Verzenden</button>
-
+                    <input type="checkbox" class="checkbox" checked id="Status"
+                           name="Status">
+                    <label for="checkbox1">
+                        Verander status naar: <span style="font-weight: bolder">Beantwoord</span>
+                    </label>
+                </div>
+                <input type="submit" id="submit" class="submit" value="Verzenden">
             </form>
         </div> <!-- content -->
 
