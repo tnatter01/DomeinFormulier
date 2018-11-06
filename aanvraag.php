@@ -33,18 +33,23 @@ if (isset($_POST['submit'])) {
     switch ($hosting) {
         case "geen-hosting":
             $hostingDesc = "Geen hosting: <br>Alleen domeinnaam, geen hosting.";
+            $hosting = "Geen hosting";
             break;
         case "pakket1":
             $hostingDesc = "Pakket 1:<br>Schijfruimte: 600mb <br> Dataverkeer: 1GB <br> Kosten per jaar: &#x20AC;69,- ";
+            $hosting = "Pakket 1";
             break;
         case "pakket2":
             $hostingDesc = "Pakket 2:<br>Schijfruimte: 1GB <br> Dataverkeer: 3GB <br> Kosten per jaar: &#x20AC;112,- ";
+            $hosting = "Pakket 2";
             break;
         case "pakket3":
             $hostingDesc = "Pakket 3:<br>Schijfruimte: 2,5GB <br> Dataverkeer: 4GB <br> Kosten per jaar: &#x20AC;270,- ";
+            $hosting = "Pakket 3";
             break;
         case "magento":
             $hostingDesc = "Magento:<br>Zo snel mogelijk contact met klant opnemen.";
+            $hosting = "Magento";
             break;
         default:
             $hostingDesc = "Geen hosting gekozen, contact opnemen met klant.";
@@ -53,12 +58,15 @@ if (isset($_POST['submit'])) {
     switch ($mailing) {
         case "exchange":
             $mailingDesc = "Exchange online:<br>Mailbox: 50GB <br> Kosten per maand: &#x20AC;3,40 <br> Set-up kosten";
+            $mailing = "Exchange";
             break;
         case "hostingmail":
             $mailingDesc = "Hosting mail:<br>Mailbox (maximaal): 600MB <br> Set-up kosten <br> Geen extra kosten";
+            $mailing = "Hosting mail";
             break;
         case "geenmail":
             $mailingDesc = "Geen mail:<br>Geen mailbox <br> Geen set-up kosten <br> Geen extra kosten";
+            $mailing = "Geen mail";
             break;
         default:
             $mailingDesc = "Geen mailing gekozen, contact opnemen met klant.";
