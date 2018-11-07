@@ -208,9 +208,9 @@ include "LinksMenu.php";
                         <div class="form-group">
                             <label class="col-md-3 control-label"></label>
                             <div class="col-md-8">
-                                <input type="submit" class="btn btn-primary" value="Save Changes">
+                                <input type="submit" class="btn btn-primary" value="Opslaan">
                                 <span></span>
-                                <input type="reset" class="btn btn-default" value="Cancel">
+                                <input onclick="location.href = 'tickets.php'" type="reset" class="btn btn-default" value="Annuleren">
                             </div>
                         </div>
                     </form>
@@ -218,26 +218,14 @@ include "LinksMenu.php";
             </div>
         </div>
     </div> <!-- content -->
-
     <footer class="footer text-right">
-
-        2017 © Adminox. - Coderthemes.com
-
+        2018 © Nubix
     </footer>
-
-
 </div>
-
-
 <!-- ============================================================== -->
-
 <!-- End Right content here -->
-
 <!-- ============================================================== -->
-
-
 </div>
-
 <!-- END wrapper -->
 
 

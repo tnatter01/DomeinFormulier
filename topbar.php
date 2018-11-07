@@ -1,6 +1,6 @@
 <div class="topbar">
     <div class="topbar-left">
-        <a href="index.html" class="logo">
+        <a href="index.php" class="logo">
                                 <span>
                                     <img src="assets/images/logo.png" alt="" height="25">
                                 </span>

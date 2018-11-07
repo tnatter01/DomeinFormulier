@@ -32,7 +32,17 @@
 <!--                <li>-->
 <!--                    <a href="contact.php"><i class="fi-layers"></i> <span> Contact </span></a>-->
 <!--                </li>-->
+                <li class="has_sub">
+
+                    <a href="javascript:void(0);"><i class="fi-marquee-plus"></i><span> Extra Pages </span> (Negeren) <span class="menu-arrow"></span></a>
+
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="email-compose.php">Email versturen</a></li>
+                        <li><a href="overzicht.php">Oude overzicht</a></li>
+                    </ul>
+                </li>
             </ul>
+
         </div>
         <div class="clearfix"></div>
     </div>
