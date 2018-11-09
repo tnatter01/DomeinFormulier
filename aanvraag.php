@@ -1,5 +1,6 @@
 <?php
 
+
 use PHPMailer\PHPMailer\PHPMailer;
 
 require 'vendor/autoload.php';
@@ -9,10 +10,8 @@ if (isset($_POST['submit'])) {
 
     require_once("index.php");
     $domeinnamen = $_POST['domeinnaamarea'];
-    $domeinnamen = str_replace("(Aanvraag)", "", $domeinnamen);
-    $domeinnamen = str_replace(" ", "", $domeinnamen);
+    $domeinnamen = str_replace(" (Aanvraag)", "", $domeinnamen);
     $domeinnamenArray = (explode(",", $domeinnamen));
-    array_pop($domeinnamenArray);
     $hosting = $_POST['hosting'];
     $mailing = $_POST['mailing'];
     $voornaam = $_POST['Voornaam'];
@@ -71,14 +70,20 @@ if (isset($_POST['submit'])) {
             $mailingDesc = "Geen mailing gekozen, contact opnemen met klant.";
     }
 
+    if(count($domeinnamenArray) > 1){
+        $dank = "Bedankt voor het aanvragen van de domeinnamen: ". implode(", ",$domeinnamenArray) . ".";
+    } else{
+        $dank = "Bedankt voor het aanvragen van de domeinnaam.";
+    }
+/*
     foreach ($domeinnamenArray as $domein) {
-        $sql = "INSERT INTO aanvragen (domeinen, hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats, 
+        $sql = "INSERT INTO aanvragen (domeinen, hosting, maling, voornaam, achternaam, bedrijfsnaam, adres, postcode, woonplaats,
                 telefoon, mobiel, email, kvk, opmerking, status) VALUES ('" . $domein . "','" . $hosting . "','" . $mailing . "','" . $voornaam .
             "','" . $achternaam . "','" . $bedrijfsnaam . "','" . $adres . "','" . $postcode . "','" . $woonplaats . "','" . $telefoon . "','" . $mobiel
             . "','" . $email . "','" . $kvk . "','" . $opmerking . "',\"Aangevraagd\");";
         mysqli_query($conn, $sql);
     }
-
+*/
 
     $mail = new PHPMailer(); // create a new object
     $mail->IsSMTP(); // enable SMTP
@@ -98,13 +103,13 @@ if (isset($_POST['submit'])) {
             <tr>
                 <td>
                     <table style=\"width:640px;border:1px solid black;table-layout: fixed;text-align:left;margin:0 auto\">
-            <tr style=\"color:#000000;background:#fef100;text-align:left;padding:5px 10px 5px 0px;\">
+            <tr style=\"color:#000000;background:#A9A6A1;text-align:left;padding:5px 10px 5px 0px;\">
             <th colspan=\"5\">Domeinnaam</th>
             </tr>
             <tr>
                 <td colspan=\"5\" style=\"text-align:left;\">$domeinnamen</td>
             </tr>
-            <tr style=\"color:#000000;background:#fef100;text-align:left;padding:5px 10px 5px 0px;\">
+            <tr style=\"color:#000000;background:#A9A6A1;text-align:left;padding:5px 10px 5px 0px;\">
             <th colspan=\"5\">Hosting</th>
             </tr>
             <tr>
@@ -113,13 +118,13 @@ if (isset($_POST['submit'])) {
                 <td></td>
                 <td></td>
             </tr>
-            <tr style=\"color:#000000;background:#fef100;text-align:left;padding:5px 10px 5px 0px;\">
+            <tr style=\"color:#000000;background:#A9A6A1;text-align:left;padding:5px 10px 5px 0px;\">
             <th colspan=\"5\">Email</th>
             </tr>
             <tr>
                 <td colspan=\"5\">$mailingDesc</td>
             </tr>
-            <tr style=\"color:#000000;background:#fef100;text-align:left;padding:5px 10px 5px 0px;\">
+            <tr style=\"color:#000000;background:#A9A6A1;text-align:left;padding:5px 10px 5px 0px;\">
             <th colspan=\"5\">Gegevens</th>
             </tr>
             <tr>
@@ -157,7 +162,7 @@ if (isset($_POST['submit'])) {
                             <td>KvK nummer:</td>
                             <td>$kvk</td>
                         </tr>
-                        <tr style=\"color:#000000;background:#fef100;text-align:left;padding:5px 10px 5px 0px;\">
+                        <tr style=\"color:#000000;background:#A9A6A1;text-align:left;padding:5px 10px 5px 0px;\">
                             <th colspan=\"5\">Opmerking</th>
                         </tr>
                         <tr>
@@ -170,6 +175,101 @@ if (isset($_POST['submit'])) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
         echo '<script>alert("Uw aanvraag is verstuurd")</script>';
+    }
+    
+    $mailKlant = new PHPMailer(); // create a new object
+    $mailKlant->IsSMTP(); // enable SMTP
+    $mailKlant->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
+    $mailKlant->SMTPAuth = true; // authentication enabled
+    $mailKlant->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
+    $mailKlant->Host = "smtp.office365.com";
+    $mailKlant->Port = 587;
+
+    $mailKlant->IsHTML(true);
+    $mailKlant->Username = $mailUsername;
+    $mailKlant->Password = $mailPassword;
+    $mailKlant->SetFrom("t.natter@nubix.nl", "Nubix Support");
+    $mailKlant->Subject = "Domeinaanvraag";
+    $mailKlant->Body = "<head>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        td{
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+<table style=\"text-align: center;\" align=\"center\">
+    <tr>
+        <td>
+            <img src=\"https://www.nubix.nl/web/wp-content/uploads/2018/11/logo_nubix-1.png\">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2>Geachte heer/mevrouw $achternaam</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>$dank</td>
+    </tr>
+    <tr>
+        <td>Wij gaan de aanvraag zo spoeding mogelijk verwerken.</td>
+    </tr>
+    <tr>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>Mocht u nog vragen hebben neem dan contact op met onze supportafdeling:</td>
+    </tr>
+    <tr>
+        <td>085 77 399 33</td>
+    </tr>
+    <tr>
+        <td>support@nubix.nl</td>
+    </tr>
+    <tr>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>Met vriendelijke groet,</td>
+    </tr>
+    <tr>
+        <td><b>Support Nubix B.V.</b></td>
+    </tr>
+    <tr>
+        <td>ICT | VoIP | WEB | CRM</td>
+    </tr>
+    <tr>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>Twijnerstraat 22</td>
+    </tr>
+    <tr>
+        <td>74831KL</td>
+    </tr>
+    <tr>
+        <td>www.nubix.nl</td>
+    </tr>
+    <tr>
+        <td>KVK 52297764 Enschede</td>
+    </tr>
+    <tr>
+        <td>IBAN NL76RABO0111115582</td>
+    </tr>
+</table>
+</body>
+            ";
+    $mailKlant->AddAddress($email);
+
+    if (!$mailKlant->Send()) {
+        echo "Mailer Error: " . $mailKlant->ErrorInfo;
     }
 }
 ?>

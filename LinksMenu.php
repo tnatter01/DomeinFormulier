@@ -39,6 +39,7 @@
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="email-compose.php">Email versturen</a></li>
                         <li><a href="overzicht.php">Oude overzicht</a></li>
+                        <li><a href="portalaanvraag.php">Test aanvraag</a></li>
                     </ul>
                 </li>
             </ul>

@@ -1,3 +1,11 @@
+<!--
+TODO aanvragen weghalen *
+TODO domeinen die bezet zijn niet laten zien *
+TODO dubbele aanvragen *
+TODO algemene voorwaarden nieuwe pagina *
+TODO hosting mail weg *
+TODO domein verhuizen
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +22,7 @@
     <!--Javascript-->
     <script src="js/common.js"></script>
     <script src="lib/prototype.js"></script>
-    <script src="jquery-1.2.6.min.js"></script>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
     <!--    Stylesheets-->
     <link rel="stylesheet" type="text/css" href="css/fontawesome/531.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/337.css">
@@ -22,17 +30,45 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .inactive{
+        color: #b9b9b9;
+        }
+    </style>
     <!--jQuery-->
     <script>
-
+        var domeinen = [];
         function aanvraag() {
             var domeinnaam = document.getElementById('Search').value;
+
             $('#aanvraagcheck:checked').each(function () {
-                $('#domeinnaamarea').append(domeinnaam + "." + this.value + "(Aanvraag), \n");
+                var domeinnaamExt = domeinnaam + "." + this.value;
+                var domeinnaamExtAanv = domeinnaam + "." + this.value + " (Aanvraag) \n";
+                var n = domeinen.includes(domeinnaamExtAanv.toString());
+                var n = n.toString();
+                if(n = "false"){
+                    domeinen.push(domeinnaamExtAanv);
+                }
+                $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtAanv + '</span><br>');
             });
+            $('#domeinnaamarea').text(domeinen.toString());
         }
 
         $(document).ready(function () {
+
+            $('.close-div').live('click', function (){
+                var search_term = $(this).attr("id");
+                for (var i=domeinen.length-1; i>=0; i--) {
+                    if (domeinen[i].includes(search_term)) {
+                    domeinen.splice(i, 1);
+                        // break;       //<-- Uncomment  if only the first term has to be removed
+                    }
+                }
+                $('#domeinnaamarea').text(domeinen.toString());
+                // $('#domeinnaamarea').val(val.replace(domeinnaamm + "(Aanvraag)", ""));
+                $(this).parent().remove();
+            });
+
             var loading;
             var results;
             loading = document.getElementById('loading');
@@ -41,6 +77,8 @@
             $('#submit').click(function () {
                 $.post("aanvraag.php", aangevraagd);
             });
+
+
 
             $('#Submit').click(function () {
                 if ($('#Search').val() == "") {
@@ -90,13 +128,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Domeinnaam</h2>
-                        <div class="panel-body">
+                        <div class="domeinnaam panel-body">
                             <form method="post" action="aanvraag.php">
-                                <strong>Domeinna(a)m(en):</strong><a style="color:red">*</a>
+                                <h4><strong>Domeinna(a)m(en):</strong><a style="color:red">*</a></h4>
+                                <br>
+                                <div id="domeinen" class="domeinen">
+                                </div>
                                 <br>
                                 <textarea id="domeinnaamarea" rows="5" readonly required
                                           name="domeinnaamarea"
-                                          style="width: 100%; resize:none;"></textarea>
+                                          style="display:none; width: 100%; resize:none;" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -202,7 +243,7 @@
                             <br>
                             <br>
 
-                            <div class="col-lg-4 col-md-4  col-sm-4 col-xs-4">
+                            <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">
                                 <div class="box-part text-center">
                                     <div class="title">
                                         <h4>Exchange online<br>(per mailbox)</h4>
@@ -217,8 +258,8 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-lg-4 col-md-4  col-sm-4 col-xs-4">
+<!-- Hosting mail
+                            <div class="inactive col-lg-4 col-md-4  col-sm-4 col-xs-4">
                                 <div class="box-part text-center">
                                     <div class="title">
                                         <h4>Hosting mail</h4>
@@ -229,13 +270,13 @@
                                                 Mailbox (maximaal): 600MB<br>
                                                 Set-up kosten<br>
                                                 Geen extra kosten<br><br>
-                                                <input type="radio" name="mailing" value="hostingmail">
+                                                <input type="radio" name="mailing" value="hostingmail" disabled>
                                             </span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-lg-4 col-md-4  col-sm-4 col-xs-4">
+-->
+                            <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">
                                 <div class="box-part text-center">
                                     <div class="title">
                                         <h4>Geen mail</h4>
@@ -343,7 +384,7 @@
                                           style="width: 100%; resize:none;"></textarea>
                             </div>
                             <br>
-                            <a href="http://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de Algemene
+                            <a target="_blank" href="http://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de Algemene
                                 Voorwaarden te lezen.</a><br>
                             <input type="checkbox" id="akkoord" value="akkoord" name="akkoord" required>Ik ga akkoord
                             met de Algemene Voorwaarden
