@@ -38,6 +38,11 @@ TODO domein verhuizen
     <!--jQuery-->
     <script>
         var domeinen = [];
+
+        function verhuis(){
+            alert($("#"));
+        }
+
         function aanvraag() {
             var domeinnaam = document.getElementById('Search').value;
 
