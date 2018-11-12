@@ -4,7 +4,8 @@ TODO domeinen die bezet zijn niet laten zien *
 TODO dubbele aanvragen *
 TODO algemene voorwaarden nieuwe pagina *
 TODO hosting mail weg *
-TODO domein verhuizen
+TODO domein verhuizen *
+TODO klantmail *
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -67,11 +68,11 @@ TODO domein verhuizen
                 var domeinnaamExtAanv = domeinnaam + "." + ext + " (Aanvraag) \n";
                 var n = domeinen.includes(domeinnaamExtAanv.toString());
                 var n = n.toString();
-                if (n = "false") {
+                if (n === "false") {
                     domeinen.push(domeinnaamExtAanv);
+                    $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtAanv + '</span><br>');
+                    $('#domeinnaamarea').text(domeinen.toString());
                 }
-                $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtAanv + '</span><br>');
-                $('#domeinnaamarea').text(domeinen.toString());
             });
 
 
@@ -82,11 +83,11 @@ TODO domein verhuizen
                 var domeinnaamExtVerh = domeinnaam + "." + ext + " (Verhuis) \n";
                 var n = domeinen.includes(domeinnaamExtVerh.toString());
                 var n = n.toString();
-                if (n = "false") {
+                if (n === "false") {
                     domeinen.push(domeinnaamExtVerh);
+                    $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtVerh + '</span><br>');
+                    $('#domeinnaamarea').text(domeinen.toString());
                 }
-                $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtVerh + '</span><br>');
-                $('#domeinnaamarea').text(domeinen.toString());
             });
 
         $('.close-div').live('click', function () {
