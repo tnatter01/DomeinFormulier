@@ -22,7 +22,8 @@ TODO domein verhuizen
     <!--Javascript-->
     <script src="js/common.js"></script>
     <script src="lib/prototype.js"></script>
-    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
+    <script type='text/javascript'
+            src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
     <!--    Stylesheets-->
     <link rel="stylesheet" type="text/css" href="css/fontawesome/531.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/337.css">
@@ -31,76 +32,103 @@ TODO domein verhuizen
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-        .inactive{
-        color: #b9b9b9;
+        .inactive {
+            color: #b9b9b9;
         }
     </style>
     <!--jQuery-->
     <script>
         var domeinen = [];
 
-        function verhuis(){
-            alert($("#"));
-        }
 
-        function aanvraag() {
-            var domeinnaam = document.getElementById('Search').value;
-
-            $('#aanvraagcheck:checked').each(function () {
-                var domeinnaamExt = domeinnaam + "." + this.value;
-                var domeinnaamExtAanv = domeinnaam + "." + this.value + " (Aanvraag) \n";
-                var n = domeinen.includes(domeinnaamExtAanv.toString());
-                var n = n.toString();
-                if(n = "false"){
-                    domeinen.push(domeinnaamExtAanv);
-                }
-                $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtAanv + '</span><br>');
-            });
-            $('#domeinnaamarea').text(domeinen.toString());
-        }
+        // function aanvraag() {
+        //     var domeinnaam = document.getElementById('Search').value;
+        //
+        //     $('#aanvraagcheck:checked').each(function () {
+        //         var domeinnaamExt = domeinnaam + "." + this.value;
+        //         var domeinnaamExtAanv = domeinnaam + "." + this.value + " (Aanvraag) \n";
+        //         var n = domeinen.includes(domeinnaamExtAanv.toString());
+        //         var n = n.toString();
+        //         if (n = "false") {
+        //             domeinen.push(domeinnaamExtAanv);
+        //         }
+        //         $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtAanv + '</span><br>');
+        //         $('#domeinnaamarea').text(domeinen.toString());
+        //     });
+        //
+        // }
 
         $(document).ready(function () {
 
-            $('.close-div').live('click', function (){
-                var search_term = $(this).attr("id");
-                for (var i=domeinen.length-1; i>=0; i--) {
-                    if (domeinen[i].includes(search_term)) {
-                    domeinen.splice(i, 1);
-                        // break;       //<-- Uncomment  if only the first term has to be removed
-                    }
+            $('.aanvraagbutton').live('click', function () {
+                var domeinnaam = document.getElementById('Search').value;
+                var ext = $(this).data('ext');
+                var domeinnaamExt = domeinnaam + "." + ext;
+                var domeinnaamExtAanv = domeinnaam + "." + ext + " (Aanvraag) \n";
+                var n = domeinen.includes(domeinnaamExtAanv.toString());
+                var n = n.toString();
+                if (n = "false") {
+                    domeinen.push(domeinnaamExtAanv);
                 }
+                $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtAanv + '</span><br>');
                 $('#domeinnaamarea').text(domeinen.toString());
-                // $('#domeinnaamarea').val(val.replace(domeinnaamm + "(Aanvraag)", ""));
-                $(this).parent().remove();
-            });
-
-            var loading;
-            var results;
-            loading = document.getElementById('loading');
-            results = document.getElementById('results');
-
-            $('#submit').click(function () {
-                $.post("aanvraag.php", aangevraagd);
             });
 
 
-
-            $('#Submit').click(function () {
-                if ($('#Search').val() == "") {
-                    alert('please enter your domain');
-                    return false;
+            $('.verhuis').live('click', function () {
+                var domeinnaam = document.getElementById('Search').value;
+                var ext = $(this).data('ext');
+                var domeinnaamExt = domeinnaam + "." + ext;
+                var domeinnaamExtVerh = domeinnaam + "." + ext + " (Verhuis) \n";
+                var n = domeinen.includes(domeinnaamExtVerh.toString());
+                var n = n.toString();
+                if (n = "false") {
+                    domeinen.push(domeinnaamExtVerh);
                 }
-                results.style.display = 'none';
-                $('#results').html('');
-                loading.style.display = 'inline';
-                $.post('process.php?domain=' + escape($('#Search').val()), {}, function (response) {
-                    results.style.display = 'block';
-                    $('#results').html(unescape(response));
-                    loading.style.display = 'none';
-                });
-                return false;
+                $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtVerh + '</span><br>');
+                $('#domeinnaamarea').text(domeinen.toString());
             });
+
+        $('.close-div').live('click', function () {
+            var search_term = $(this).attr("id");
+            for (var i = domeinen.length - 1; i >= 0; i--) {
+                if (domeinen[i].includes(search_term)) {
+                    domeinen.splice(i, 1);
+                    // break;       //<-- Uncomment  if only the first term has to be removed
+                }
+            }
+            $('#domeinnaamarea').text(domeinen.toString());
+            // $('#domeinnaamarea').val(val.replace(domeinnaamm + "(Aanvraag)", ""));
+            $(this).parent().remove();
         });
+
+        var loading;
+        var results;
+        loading = document.getElementById('loading');
+        results = document.getElementById('results');
+
+        $('#submit').click(function () {
+            $.post("aanvraag.php", aangevraagd);
+        });
+
+
+        $('#Submit').click(function () {
+            if ($('#Search').val() == "") {
+                alert('please enter your domain');
+                return false;
+            }
+            results.style.display = 'none';
+            $('#results').html('');
+            loading.style.display = 'inline';
+            $.post('process.php?domain=' + escape($('#Search').val()), {}, function (response) {
+                results.style.display = 'block';
+                $('#results').html(unescape(response));
+                loading.style.display = 'none';
+            });
+            return false;
+        });
+        })
+        ;
 
 
     </script>
@@ -142,7 +170,7 @@ TODO domein verhuizen
                                 <br>
                                 <textarea id="domeinnaamarea" rows="5" readonly required
                                           name="domeinnaamarea"
-                                          style="display:none; width: 100%; resize:none;" ></textarea>
+                                          style="display:none; width: 100%; resize:none;"></textarea>
                         </div>
                     </div>
                 </div>
@@ -263,24 +291,24 @@ TODO domein verhuizen
                                     </div>
                                 </div>
                             </div>
-<!-- Hosting mail
-                            <div class="inactive col-lg-4 col-md-4  col-sm-4 col-xs-4">
-                                <div class="box-part text-center">
-                                    <div class="title">
-                                        <h4>Hosting mail</h4>
-                                    </div>
-                                    <div class="text">
-                                            <span>
-                                                <br>
-                                                Mailbox (maximaal): 600MB<br>
-                                                Set-up kosten<br>
-                                                Geen extra kosten<br><br>
-                                                <input type="radio" name="mailing" value="hostingmail" disabled>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
--->
+                            <!-- Hosting mail
+                                                        <div class="inactive col-lg-4 col-md-4  col-sm-4 col-xs-4">
+                                                            <div class="box-part text-center">
+                                                                <div class="title">
+                                                                    <h4>Hosting mail</h4>
+                                                                </div>
+                                                                <div class="text">
+                                                                        <span>
+                                                                            <br>
+                                                                            Mailbox (maximaal): 600MB<br>
+                                                                            Set-up kosten<br>
+                                                                            Geen extra kosten<br><br>
+                                                                            <input type="radio" name="mailing" value="hostingmail" disabled>
+                                                                        </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                            -->
                             <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">
                                 <div class="box-part text-center">
                                     <div class="title">
@@ -389,7 +417,8 @@ TODO domein verhuizen
                                           style="width: 100%; resize:none;"></textarea>
                             </div>
                             <br>
-                            <a target="_blank" href="http://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de Algemene
+                            <a target="_blank" href="http://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de
+                                Algemene
                                 Voorwaarden te lezen.</a><br>
                             <input type="checkbox" id="akkoord" value="akkoord" name="akkoord" required>Ik ga akkoord
                             met de Algemene Voorwaarden

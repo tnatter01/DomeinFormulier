@@ -31,12 +31,12 @@ if (isset($_GET['domain'])) {
             if (eregi($who[1], $buffer)) {
                 $extzonderpunt = str_replace(".", "", $extension);
                 $domeinmetext = "$domain$extension";
-                echo '<h4 class="available"><input type="checkbox" id="aanvraagcheck" " value="' . $extzonderpunt . '" >  <button id="verhuisbutton" onclick="verhuis()"  class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i> Aanvragen</button><span> Beschikbaar</span>' . $domain . '<b>' . $extension . '</b> is vrij 
+                echo '<h4 class="available"><button data-ext="' . $extzonderpunt . '" class="aanvraagbutton btn btn-success btn-sm"><i class="fas fa-plus-square"></i> Aanvragen</button> ' . $domain . '<b>' . $extension . '</b> is vrij 
 							</h4>';
             } else {
                 $extzonderpunt = str_replace(".", "", $extension);
                 $domeinmetext = "$domain$extension";
-                echo '<h4 class="taken"><button id="' . $extzonderpunt . '" onclick="verhuis()" class="btn btn-danger btn-sm"><i class="fas fa-truck-moving"></i> Verhuizen</button> <span>In gebruik </span>' . $domain . '<b>' . $extension . '</b> is in 						gebruik </h4>';
+                echo '<h4 class="taken"><button data-ext="' . $extzonderpunt . '" class="verhuis btn btn-danger btn-sm"><i class="fas fa-truck-moving"></i> Verhuizen</button> ' . $domain . '<b>' . $extension . '</b> is in 						gebruik </h4>';
             }
             echo '<br />';
             ob_flush();
@@ -46,6 +46,5 @@ if (isset($_GET['domain'])) {
     } else {
         echo 'Vul een domeinnaam in.';
     }
-    echo '<span>Selecteer de domeinen die u wilt aanvragen en klik op de knop hieronder.<br></span><button id="aanvraagbutton" onclick="aanvraag()">Aanvragen</button>';
 }
 ?>
