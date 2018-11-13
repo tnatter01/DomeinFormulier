@@ -6,6 +6,7 @@ TODO algemene voorwaarden nieuwe pagina *
 TODO hosting mail weg *
 TODO domein verhuizen *
 TODO klantmail *
+TODO verhuiscode prompt *
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +22,13 @@ TODO klantmail *
     <!--Favicon-->
     <link rel="shortcut icon" href="images/favicon.ico">
     <!--Javascript-->
+    <script src="jquery-1.2.6.min.js"></script>
     <script src="js/common.js"></script>
     <script src="lib/prototype.js"></script>
     <script type='text/javascript'
             src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
+    <script src="plugins/sweet-alert2/sweetalert2.min.js"></script>
+
     <!--    Stylesheets-->
     <link rel="stylesheet" type="text/css" href="css/fontawesome/531.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/337.css">
@@ -32,6 +36,7 @@ TODO klantmail *
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
     <style>
         .inactive {
             color: #b9b9b9;
@@ -39,6 +44,8 @@ TODO klantmail *
     </style>
     <!--jQuery-->
     <script>
+
+
         var domeinen = [];
 
 
@@ -75,19 +82,32 @@ TODO klantmail *
                 }
             });
 
-
             $('.verhuis').live('click', function () {
                 var domeinnaam = document.getElementById('Search').value;
                 var ext = $(this).data('ext');
                 var domeinnaamExt = domeinnaam + "." + ext;
-                var domeinnaamExtVerh = domeinnaam + "." + ext + " (Verhuis) \n";
-                var n = domeinen.includes(domeinnaamExtVerh.toString());
-                var n = n.toString();
-                if (n === "false") {
-                    domeinen.push(domeinnaamExtVerh);
-                    $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtVerh + '</span><br>');
-                    $('#domeinnaamarea').text(domeinen.toString());
-                }
+                swal({
+                    title: 'Verhuiscode ' + domeinnaamExt,
+                    html: 'Vul hier de verhuiscode voor het domein <b>' + domeinnaamExt + '</b> in. <br><br>',
+                    input: 'text',
+                    type: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Bevestigen',
+                    cancelButtonText: 'Annuleren',
+                    showLoaderOnConfirm: true,
+                    confirmButtonClass: 'btn btn-success',
+                    cancelButtonClass: 'btn btn-danger m-l-10',
+                    allowOutsideClick: false
+                }).then(function (verhuiscode) {
+                    var domeinnaamExtVerh = domeinnaam + "." + ext + " (Verhuizen)(Verhuiscode:" + verhuiscode + ")";
+                    var n = domeinen.includes(domeinnaamExtVerh.toString());
+                    var n = n.toString();
+                    if (n === "false") {
+                        domeinen.push(domeinnaamExtVerh);
+                        $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtVerh + '</span><br>');
+                        $('#domeinnaamarea').text(domeinen.toString());
+                    }
+                });
             });
 
         $('.close-div').live('click', function () {
