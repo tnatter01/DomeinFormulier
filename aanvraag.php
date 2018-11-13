@@ -71,9 +71,9 @@ if (isset($_POST['submit'])) {
     }
 
     if(count($domeinnamenArray) > 1){
-        $dank = "Bedankt voor het aanvragen van de domeinnamen: ". implode(", ",$domeinnamenArray) . ".";
+        $dank = "Bedankt voor het aanvragen van de domeinnamen: <br><b>". implode("<br>",$domeinnamenArray) . "</b><br>";
     } else{
-        $dank = "Bedankt voor het aanvragen van de domeinnaam.";
+        $dank = "Bedankt voor het aanvragen van de domeinnaam: <br><b>". implode("<br>",$domeinnamenArray) . "</b><br>";
     }
 /*
     foreach ($domeinnamenArray as $domein) {
