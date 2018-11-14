@@ -1,5 +1,5 @@
+// Aangevraagde domeinen array
 var domeinen = [];
-
 
 // function aanvraag() {
 //     var domeinnaam = document.getElementById('Search').value;
@@ -18,34 +18,24 @@ var domeinen = [];
 //
 // }
 
-$(document).ready(function () {
 
-    $('.aanvraagbutton').live('click', function () {
-        var domeinnaam = document.getElementById('Search').value;
-        if(domeinnaam.indexOf('.') !== -1)
-        {
-            var domeinnaam = domeinnaam.replace(/\.[^/.]+$/, "");
-            alert(domeinnaam);
-        }
-        var ext = $(this).data('ext');
-        var domeinnaamExt = domeinnaam + "." + ext;
-        var domeinnaamExtAanv = domeinnaam + "." + ext + " (Aanvraag)";
-        var n = domeinen.includes(domeinnaamExtAanv.toString());
-        var n = n.toString();
+$(document).ready(function () { //jQuery begin
+    $('.aanvraagbutton').live('click', function () { //Als op aanvraag knop wordt geklikt
+        var domeinnaam = document.getElementById('Search').value; // Domeinnaam definieren
+        var ext = $(this).data('ext'); // Extensie definieren
+        var domeinnaamExt = domeinnaam + "." + ext; // Domeinnaam + Extensie
+        var domeinnaamExtAanv = domeinnaam + "." + ext + " (Aanvraag)"; // Domeinnaam + Extensie + (Aanvraag)
+        var n = domeinen.includes(domeinnaamExtAanv.toString()); //Check of domein al in array zit
+        var n = n.toString(); // Check naar string(true/false)
         if (n === "false") {
-            domeinen.push(domeinnaamExtAanv);
-            $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtAanv + '</span><br>');
+            domeinen.push(domeinnaamExtAanv); //Toevoegen aan array
+            $("#domeinen").append('<div id=' + domeinnaamExt + '><a href="#domeinnaam" class="glyphicon glyphicon-minus-sign close-div" style="color:red" id=' + domeinnaamExt + '></a><span>' + '  ' + domeinnaamExtAanv + '</span><br>'); //Domein met verwijderknop toevoegen aan div domeinen
             $('#domeinnaamarea').text(domeinen.toString());
         }
     });
 
     $('.verhuis').live('click', function () {
         var domeinnaam = document.getElementById('Search').value;
-        if(domeinnaam.indexOf('.') !== -1)
-        {
-            var domeinnaam = domeinnaam.replace(/\.[^/.]+$/, "");
-            alert(domeinnaam);
-        }
         var ext = $(this).data('ext');
         var domeinnaamExt = domeinnaam + "." + ext;
         swal({

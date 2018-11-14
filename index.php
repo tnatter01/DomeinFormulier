@@ -1,3 +1,12 @@
+<!--
+TODO aanvragen kunnen weghalen *
+TODO dubbele aanvragen *
+TODO algemene voorwaarden nieuwe pagina *
+TODO hosting mail weg *
+TODO domein verhuizen *
+TODO mail voor klant *
+TODO verhuiscode prompt *
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +24,9 @@
     <script src="jquery-1.2.6.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/main.js"></script>
-    <script src="lib/prototype.js"></script>
+    <!--    <script src="lib/prototype.js"></script>-->
     <script type='text/javascript'
-            src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
+            src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
     <script src="plugins/sweet-alert2/sweetalert2.min.js"></script>
 
 
@@ -29,11 +38,6 @@
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
-    <style>
-        .inactive {
-            color: #b9b9b9;
-        }
-    </style>
     <!--jQuery-->
 </head>
 
@@ -51,8 +55,8 @@
                             Controleer eerst of de door u aan te vragen domeinnaam beschikbaar is.<br>
                             Voer uw domeinnaam in <u>zonder</u> extensie.<br>
                             <form method="post" action="./" id="form">
-                                <input type="text" autocomplete="off" id="Search" name="domain">
-                                <input type="submit" id="Submit" value="Controleren">
+                                <input class="input-text" type="text" autocomplete="off" id="Search" name="domain">
+                                <input class="btn btn-secondary" type="submit" id="Submit" value="Controleren">
                             </form>
                             <div id="loading"><img alt="Loading..." style="height: 50px; width: 50px;"
                                                    src="images/load.gif"></div>
@@ -63,10 +67,10 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2>Domeinnaam</h2>
+                        <h2>Domeinnamen</h2>
                         <div class="domeinnaam panel-body">
                             <form method="post" action="aanvraag.php">
-                                <h4><strong>Domeinna(a)m(en):</strong><a style="color:red">*</a></h4>
+                                <h4><strong>Domeinnamen:</strong><a style="color:red">*</a></h4>
                                 <br>
                                 <div id="domeinen" class="domeinen">
                                 </div>
@@ -77,8 +81,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Hosting <span style="color:red;">*</span></h2>
@@ -129,7 +131,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
                                     <div class="box-part text-center">
                                         <div class="title">
@@ -145,7 +146,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
                                     <div class="box-part text-center">
                                         <div class="title">
@@ -163,19 +163,15 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Email <span style="color:red;">*</span></h2>
                         <div class="panel-body">
-
                             <strong>Veel van onze klanten maken gebruik van Exchange Online.<br>
                                 <a href="https://www.nubix.nl/domein.php/exchange_online">Klik hier</a> voor uw
                                 voordelen van het gebruik van
                                 <a href="https://www.nubix.nl/domein.php/exchange_online">Exchange Online</a>.
                             </strong>
-
                             <br>
                             <br>
 
@@ -320,7 +316,7 @@
                                           style="width: 100%; resize:none;"></textarea>
                             </div>
                             <br>
-                            <a target="_blank" href="http://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de
+                            <a target="_blank" href="https://www.nubix.nl/algemenevoorwaardennubix.pdf">Klik hier om de
                                 Algemene
                                 Voorwaarden te lezen.</a><br>
                             <input type="checkbox" id="akkoord" value="akkoord" name="akkoord" required>Ik ga akkoord
@@ -331,7 +327,8 @@
                             <br>
                             <span style="color:red;">* Vereiste velden</span>
                             <br>
-                            <button type="submit" id="submit" name="submit">Verstuur</button>
+                            <button style="width: 100%;" class=" btn btn-primary" type="submit" id="submit" name="submit">Verstuur
+                            </button>
                         </div>
                     </div>
                 </div>
