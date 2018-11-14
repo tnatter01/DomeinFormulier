@@ -22,6 +22,11 @@ $(document).ready(function () {
 
     $('.aanvraagbutton').live('click', function () {
         var domeinnaam = document.getElementById('Search').value;
+        if(domeinnaam.indexOf('.') !== -1)
+        {
+            var domeinnaam = domeinnaam.replace(/\.[^/.]+$/, "");
+            alert(domeinnaam);
+        }
         var ext = $(this).data('ext');
         var domeinnaamExt = domeinnaam + "." + ext;
         var domeinnaamExtAanv = domeinnaam + "." + ext + " (Aanvraag)";
@@ -36,6 +41,11 @@ $(document).ready(function () {
 
     $('.verhuis').live('click', function () {
         var domeinnaam = document.getElementById('Search').value;
+        if(domeinnaam.indexOf('.') !== -1)
+        {
+            var domeinnaam = domeinnaam.replace(/\.[^/.]+$/, "");
+            alert(domeinnaam);
+        }
         var ext = $(this).data('ext');
         var domeinnaamExt = domeinnaam + "." + ext;
         swal({

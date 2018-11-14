@@ -1,12 +1,3 @@
-<!--
-TODO aanvragen kunnen weghalen *
-TODO dubbele aanvragen *
-TODO algemene voorwaarden nieuwe pagina *
-TODO hosting mail weg *
-TODO domein verhuizen *
-TODO mail voor klant *
-TODO verhuiscode prompt *
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>

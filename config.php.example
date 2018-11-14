@@ -1,6 +1,5 @@
 <?php
 
-
 $host = "localhost";
 $userName = "root";
 $password = "password";
@@ -11,7 +10,6 @@ $conn = new mysqli($host, $userName, $password, $dbName);
 if ($conn->connect_error) {
     die("Niet verbonden: " . $conn->connect_error);
 }
-Ø
 
 global $mailUsername;
 global $mailPassword;
