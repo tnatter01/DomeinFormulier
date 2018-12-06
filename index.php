@@ -28,8 +28,6 @@ TODO verhuiscode prompt *
     <script type='text/javascript'
             src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
     <script src="plugins/sweet-alert2/sweetalert2.min.js"></script>
-
-
     <!--    Stylesheets-->
     <link rel="stylesheet" type="text/css" href="css/fontawesome/531.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/337.css">
@@ -38,7 +36,24 @@ TODO verhuiscode prompt *
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
-    <!--jQuery-->
+    <!--Style-->
+    <style>
+        * {
+            border-radius: 0 !important;
+            -moz-border-radius: 0 !important;
+        }
+
+        .panel-default > .panel-heading {
+            color: #333;
+            background-color: #fff;
+            border-color: #fff;
+            border-top: 3px solid yellow;
+        }
+
+        .input-text {
+            min-width: 30%;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,7 +65,7 @@ TODO verhuiscode prompt *
             <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2>Domeincontrole voor aanvraag of verhuizen <span style="color:red;">*</span></h2>
+                        <h2>Domeincontrole voor aanvraag of verhuizen <span style="color:red;">*</span></h2></div>
                         <div class="panel-body">
                             Controleer eerst of de door u aan te vragen domeinnaam beschikbaar is.<br>
                             Voer uw domeinnaam in <u>zonder</u> extensie.<br>
@@ -64,7 +79,6 @@ TODO verhuiscode prompt *
                             <div id="results">
                             </div>
                         </div>
-                    </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -78,7 +92,7 @@ TODO verhuiscode prompt *
                                 <br>
                                 <textarea id="domeinnaamarea" rows="5" readonly required
                                           name="domeinnaamarea"
-                                          style="display:none; width: 100%; resize:none;"></textarea>
+                                          style="display:none;"></textarea>
                         </div>
                     </div>
                 </div>
@@ -132,6 +146,7 @@ TODO verhuiscode prompt *
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
                                     <div class="box-part text-center">
                                         <div class="title">
@@ -147,6 +162,7 @@ TODO verhuiscode prompt *
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2">
                                     <div class="box-part text-center">
                                         <div class="title">
@@ -160,12 +176,12 @@ TODO verhuiscode prompt *
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                            <div class="row">
-                                <br>
-                                <p>Heb je hulp nodig bij het kiezen van hostingpakket? Wij helpen jou graag! <br>Neem
-                                    voor vragen contact met ons op.</p>
-                            </div>
+                            <br>
+                            <p>Heb je hulp nodig bij het kiezen van hostingpakket? Wij helpen jou graag! <br>Neem
+                                voor vragen contact met ons op.
+                            </p>
                         </div>
                     </div>
                 </div>
