@@ -22,6 +22,7 @@ var domeinen = [];
 $(document).ready(function () { //jQuery begin
     $('.aanvraagbutton').live('click', function () { //Als op aanvraag knop wordt geklikt
         var domeinnaam = document.getElementById('Search').value; // Domeinnaam definieren
+        var domeinnaam = domeinnaam.replace(/\.[^/.]+$/, ""); // Verwijder extensie als domeinnaam is ingevuld met extensie
         var ext = $(this).data('ext'); // Extensie definieren
         var domeinnaamExt = domeinnaam + "." + ext; // Domeinnaam + Extensie
         var domeinnaamExtAanv = domeinnaam + "." + ext + " (Aanvraag)"; // Domeinnaam + Extensie + (Aanvraag)
