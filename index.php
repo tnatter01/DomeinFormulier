@@ -228,7 +228,6 @@ TODO verhuiscode prompt *
                         </div>
                     </div>
                 </div>
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Gegevens</h2>
@@ -255,7 +254,7 @@ TODO verhuiscode prompt *
                                            required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="Postcode"><i class="fas fa-map-marker-alt"></i> Postcode<span
+                                    <label for="Postcode"><i class="fas fa-map-pin"></i></i> Postcode<span
                                                 style="color:red;">*</span></label>
                                     <input type="text" class="form-control" id="Postcode" name="Postcode"
                                            placeholder="Postcode" required>
@@ -266,8 +265,7 @@ TODO verhuiscode prompt *
                                     <label for="Woonplaats"><i class="fas fa-map-marker-alt"></i> Woonplaats<span
                                                 style="color:red;">*</span></label>
                                     <input type="text" class="form-control" id="Woonplaats" name="Woonplaats"
-                                           placeholder="Woonplaats"
-                                           required>
+                                           placeholder="Woonplaats" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Email"><i class="fas fa-envelope"></i> Email adres<span
@@ -327,7 +325,8 @@ TODO verhuiscode prompt *
                             <br>
                             <span style="color:red;">* Vereiste velden</span>
                             <br>
-                            <button style="width: 100%;" class=" btn btn-primary" type="submit" id="submit" name="submit">Verstuur
+                            <button style="width: 100%;" class=" btn btn-primary" type="submit" id="submit"
+                                    name="submit">Verstuur
                             </button>
                         </div>
                     </div>
