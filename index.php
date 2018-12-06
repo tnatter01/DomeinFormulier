@@ -55,7 +55,8 @@ TODO verhuiscode prompt *
                             Controleer eerst of de door u aan te vragen domeinnaam beschikbaar is.<br>
                             Voer uw domeinnaam in <u>zonder</u> extensie.<br>
                             <form method="post" action="./" id="form">
-                                <input class="input-text" type="text" autocomplete="off" id="Search" name="domain">
+                                <input class="input-text" type="text" autocomplete="off" id="Search" name="domain"
+                                       maxlength="253">
                                 <input class="btn btn-secondary" type="submit" id="Submit" value="Controleren">
                             </form>
                             <div id="loading"><img alt="Loading..." style="height: 50px; width: 50px;"
@@ -159,6 +160,11 @@ TODO verhuiscode prompt *
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <br>
+                                <p>Heb je hulp nodig bij het kiezen van hostingpakket? Wij helpen jou graag! <br>Neem
+                                    voor vragen contact met ons op.</p>
                             </div>
                         </div>
                     </div>
